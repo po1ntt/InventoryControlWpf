@@ -1,0 +1,324 @@
+﻿<Page x:Class="InventoryControl.Pages.PropertiesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryControl.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1200"
+      Title="PropertiesPage"
+      Background="White">
+
+    <Grid>
+        <TabControl Background="Blue" >
+            <TabItem Width="auto" Background="DarkBlue" Header="Бренд" Style="{StaticResource MyTab}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="154*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="251*"/>
+                                <ColumnDefinition Width="549*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+
+                            </Button>
+                            <Button Grid.Column="1" Content="Новый бренд" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1">
+                        <Grid>
+                            <DataGrid x:Name="DgBrand" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Название бренда" Width="*" Binding="{Binding namebrand}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Описание" Width="2*">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Edit.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Delete.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
+                   
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Width="auto" Header="Тип техники" Style="{StaticResource MyTab}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="154*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="251*"/>
+                                <ColumnDefinition Width="549*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+
+                            </Button>
+                            <Button Grid.Column="1" Content="Новый тип техники" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1">
+                        <Grid >
+                            <DataGrid x:Name="DgType" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Тип техники" Width="*" Binding="{Binding NameTypeEquip}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Описание" Width="2*">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Edit.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Delete.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
+                    
+
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Width="auto" Header="Поставщики" Style="{StaticResource MyTab}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="154*"/>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="251*"/>
+                                <ColumnDefinition Width="549*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+
+                            </Button>
+                            <Button Grid.Column="1" Content="Новый поставщик" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                                
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1">
+                        <Grid>
+                            <DataGrid  x:Name="DgSellers" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Поставщик" Width="*" Binding="{Binding nameSeller}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Описание" Width="2*">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Edit.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Delete.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+
+                    </ScrollViewer>
+                   
+                   
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Width="auto" Header="Техника" Style="{StaticResource MyTab}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="154*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="251*"/>
+                                <ColumnDefinition Width="549*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Button Click="BackToMainClick"  Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+
+                            </Button>
+                            <Button Grid.Column="1" Content="Новая техника" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1">
+                        <Grid >
+                            <DataGrid x:Name="DgEquipment" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Название техники" Width="*" Binding="{Binding name}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Бренд" Width="1*" Binding="{Binding Brand.namebrand}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Тип техники" Width="1*" Binding="{Binding TypeOfEquipment.NameTypeEquip}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Edit.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Delete.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Width="auto" Background="DarkBlue" Header="Отдел" Style="{StaticResource MyTab}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="154*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+
+                                <ColumnDefinition Width="251*"/>
+                                <ColumnDefinition Width="549*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+
+                            </Button>
+                            <Button Grid.Column="1" Content="Новый отдел" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+
+                            </Button>
+                        </Grid>
+                    </Grid>
+                    <ScrollViewer Grid.Row="1">
+                        <Grid>
+                            <DataGrid  x:Name="DgDepartament" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Название отдела" Width="*" Binding="{Binding name_departament}">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Описание" Width="2*">
+
+                                    </DataGridTextColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Edit.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Width="50" Height="50" Background="Transparent">
+                                                    <Image Source="/images/Delete.png"></Image>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
+                  
+
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>

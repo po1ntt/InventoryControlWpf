@@ -1,0 +1,104 @@
+﻿<Page x:Class="InventoryControl.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryControl.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1200"
+      Title="HomePage"
+      Background="White"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="937*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="211*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Управление свойствами" Click="PropertiesClick" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+            <Button Content="Новый заказ"  Margin="0 0 20 0"  Foreground="Black"  Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+            <Button Content="Добавление новой техники"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <Grid >
+                <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Width="250" Binding="{Binding Equipment.name}">
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Тип техники" Width="*" Binding="{Binding Equipment.TypeOfEquipment.NameTypeEquip}">
+
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Бренд" Width="*" Binding="{Binding Equipment.Brand.namebrand}">
+
+
+                        </DataGridTextColumn>
+
+                        <materialDesign:DataGridTextColumn Header="Количество" Width="*" Binding="{Binding count}">
+
+
+                        </materialDesign:DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="50" Height="50" Background="Transparent">
+                                        <Image Source="/images/Edit.png"></Image>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="50" Height="50" Background="Transparent">
+                                        <Image Source="/images/Delete.png"></Image>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </ScrollViewer>
+       
+        <StackPanel  Grid.Row="0" Margin="10 20" Grid.RowSpan="2">
+            <TextBlock Text="Фильтры:" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
+            <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
+            <TextBox Height="50" Margin="0 0 0 20" TextChanged="NameFilter">
+
+            </TextBox >
+            <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
+
+                </TextBox >
+                <ComboBox Width="30" Height="30">
+                    
+                </ComboBox>
+            </StackPanel>
+            
+            <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
+            <ComboBox Height="50"  Margin="0 0 0 20">
+
+            </ComboBox>
+           
+            <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
+            <ComboBox Height="50"  Margin="0 0 0 20">
+
+            </ComboBox>
+           
+            <Grid Height="300">
+             
+
+
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Page>
