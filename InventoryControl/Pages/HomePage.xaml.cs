@@ -51,5 +51,10 @@ namespace InventoryControl.Pages
 
             }
         }
+
+        private void OrdersClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Frame.FrameOBJ.Navigate(new OrdersPage());
+        }
     }
 }

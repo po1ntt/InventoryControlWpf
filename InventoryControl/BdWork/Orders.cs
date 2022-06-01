@@ -15,12 +15,13 @@ namespace InventoryControl.BdWork
     public partial class Orders
     {
         public int id_orders { get; set; }
-        public string Equipment_id { get; set; }
+        public Nullable<int> Equipment_id { get; set; }
         public Nullable<int> Count { get; set; }
         public Nullable<int> seller_id { get; set; }
         public Nullable<int> priceForOne { get; set; }
         public Nullable<int> id_status { get; set; }
     
+        public virtual Equipment Equipment { get; set; }
         public virtual Seller Seller { get; set; }
         public virtual Status Status { get; set; }
     }

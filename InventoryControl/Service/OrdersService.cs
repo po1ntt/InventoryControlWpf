@@ -22,5 +22,24 @@ namespace InventoryControl.Service
             }
             return Collection;
         }
+        public static string addOrder(int count, int id_equip, int seller_id, int price)
+        {
+            string result = "Ошибка";
+            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                context.Orders.Add(new Orders
+                {
+                    id_orders = context.Orders.Count() + 1,
+                    id_status = 1,
+                    Equipment_id = id_equip,
+                    seller_id = seller_id,
+                    priceForOne = price,
+                    Count = count
+                    
+                });
+                result = "Запись успешно добавлена";
+            }
+            return result;
+        }
     }
 }

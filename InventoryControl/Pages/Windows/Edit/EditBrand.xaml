@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Edit"
         mc:Ignorable="d"
-        Title="EditBrand" Height="450" Width="800">
+        Title="Brand" Height="600" Width="400">
     <Grid>
         
     </Grid>

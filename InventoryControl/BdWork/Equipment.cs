@@ -18,6 +18,7 @@ namespace InventoryControl.BdWork
         public Equipment()
         {
             this.DepartamentEquipment = new HashSet<DepartamentEquipment>();
+            this.Orders = new HashSet<Orders>();
             this.WarehouseEquipment = new HashSet<WarehouseEquipment>();
         }
     
@@ -30,6 +31,8 @@ namespace InventoryControl.BdWork
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DepartamentEquipment> DepartamentEquipment { get; set; }
         public virtual TypeOfEquipment TypeOfEquipment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WarehouseEquipment> WarehouseEquipment { get; set; }
     }

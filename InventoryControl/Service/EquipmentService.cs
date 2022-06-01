@@ -22,5 +22,31 @@ namespace InventoryControl.Service
             }
             return Collection;
         }
+        public static string addEquipment(string nameequip, int id_typeequip, int brand)
+        {
+            string result = "Ошибка";
+            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var equip = context.Equipment.FirstOrDefault(p => p.name == nameequip);
+                if(equip == null)
+                {
+                    context.Equipment.Add(new Equipment
+                    {
+                        id_equip = context.Equipment.Count() + 1,
+                        name = nameequip,
+                        id_brand = brand,
+                        typeofequipment_id = id_typeequip
+                        
+                       
+                    });
+                    result = "Новая техника успешно добавлена";
+                }
+                else
+                {
+                    result = "Техника уже существует";
+                }
+            }
+            return result;
+        }
     }
 }

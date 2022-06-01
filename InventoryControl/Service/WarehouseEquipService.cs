@@ -74,7 +74,8 @@ namespace InventoryControl.Service
                     {
                         var equipmentWareHouse = context.WarehouseEquipment.Where(p => p.id_equipment == id_equip).FirstOrDefault();
                         equipmentWareHouse.count = Convert.ToString(Convert.ToInt32(equipmentWareHouse.count) + count);
-                        result = "Обновлено количество";
+                        context.SaveChanges();
+                        result = "Обновлено количество техники";
                     }
                     else
                     {

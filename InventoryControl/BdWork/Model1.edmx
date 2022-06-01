@@ -42,7 +42,7 @@
             <PropertyRef Name="id_orders" />
           </Key>
           <Property Name="id_orders" Type="int" Nullable="false" />
-          <Property Name="Equipment_id" Type="nvarchar(max)" />
+          <Property Name="Equipment_id" Type="int" />
           <Property Name="Count" Type="int" />
           <Property Name="seller_id" Type="int" />
           <Property Name="priceForOne" Type="int" />
@@ -132,6 +132,18 @@
             </Principal>
             <Dependent Role="Equipment">
               <PropertyRef Name="typeofequipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id_equip" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Equipment_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -229,6 +241,10 @@
             <End Role="TypeOfEquipment" EntitySet="TypeOfEquipment" />
             <End Role="Equipment" EntitySet="Equipment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Orders_Equipment" Association="Self.FK_Orders_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
           <AssociationSet Name="FK_Orders_Seller" Association="Self.FK_Orders_Seller">
             <End Role="Seller" EntitySet="Seller" />
             <End Role="Orders" EntitySet="Orders" />
@@ -285,6 +301,7 @@
           <NavigationProperty Name="Brand" Relationship="Self.FK_Equipment_Brand" FromRole="Equipment" ToRole="Brand" />
           <NavigationProperty Name="DepartamentEquipment" Relationship="Self.FK_DepartamentEquipment_Equipment" FromRole="Equipment" ToRole="DepartamentEquipment" />
           <NavigationProperty Name="TypeOfEquipment" Relationship="Self.FK_Equipment_TypeOfEquipment" FromRole="Equipment" ToRole="TypeOfEquipment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Equipment" FromRole="Equipment" ToRole="Orders" />
           <NavigationProperty Name="WarehouseEquipment" Relationship="Self.FK_WarehouseEquipment_Equipment" FromRole="Equipment" ToRole="WarehouseEquipment" />
         </EntityType>
         <EntityType Name="Orders">
@@ -292,11 +309,12 @@
             <PropertyRef Name="id_orders" />
           </Key>
           <Property Name="id_orders" Type="Int32" Nullable="false" />
-          <Property Name="Equipment_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Equipment_id" Type="Int32" />
           <Property Name="Count" Type="Int32" />
           <Property Name="seller_id" Type="Int32" />
           <Property Name="priceForOne" Type="Int32" />
           <Property Name="id_status" Type="Int32" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_Orders_Equipment" FromRole="Orders" ToRole="Equipment" />
           <NavigationProperty Name="Seller" Relationship="Self.FK_Orders_Seller" FromRole="Orders" ToRole="Seller" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Orders_Status" FromRole="Orders" ToRole="Status" />
         </EntityType>
@@ -391,6 +409,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Orders_Equipment">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="id_equip" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Equipment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WarehouseEquipment_Equipment">
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
           <End Role="WarehouseEquipment" Type="Self.WarehouseEquipment" Multiplicity="*" />
@@ -453,6 +483,10 @@
           <AssociationSet Name="FK_Equipment_TypeOfEquipment" Association="Self.FK_Equipment_TypeOfEquipment">
             <End Role="TypeOfEquipment" EntitySet="TypeOfEquipment" />
             <End Role="Equipment" EntitySet="Equipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Equipment" Association="Self.FK_Orders_Equipment">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="FK_WarehouseEquipment_Equipment" Association="Self.FK_WarehouseEquipment_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />

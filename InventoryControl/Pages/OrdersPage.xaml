@@ -1,0 +1,113 @@
+﻿<Page x:Class="InventoryControl.Pages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryControl.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1200"
+      Title="Orders"
+      Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="937*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="197*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="324,0" Width="140">
+            <TextBlock Text="Заказы" VerticalAlignment="Center" FontSize="40" FontWeight="Bold"></TextBlock>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+            <Grid >
+                <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding Equipment.name}" IsReadOnly="True">
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Тип техники" Width="0.20*" Binding="{Binding Equipment.TypeOfEquipment.NameTypeEquip}" IsReadOnly="True">
+
+
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Бренд" Width="0.20*" Binding="{Binding Equipment.Brand.namebrand}" IsReadOnly="True">
+
+
+                        </DataGridTextColumn>
+
+                        <materialDesign:DataGridTextColumn Header="Кол-во" Width="0.10*" Binding="{Binding Count}" IsReadOnly="True">
+
+
+                        </materialDesign:DataGridTextColumn>
+                        <materialDesign:DataGridTextColumn Header="Цена за 1-ну" Width="0.15*" Binding="{Binding priceForOne}"  IsReadOnly="True">
+
+
+                        </materialDesign:DataGridTextColumn>
+                        <DataGridComboBoxColumn  Header="Статус" Width="0.30*" x:Name="comboOrder"  SelectedValuePath="id_status" materialDesign:ComboBoxAssist.ClassicMode="False" SelectedValueBinding="{Binding Path=id_status}" DisplayMemberPath="status1" IsReadOnly="False">
+                            
+                        </DataGridComboBoxColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="50" Height="50" Background="Transparent">
+                                        <Image Source="/images/Delete.png"></Image>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </ScrollViewer>
+        <TextBlock Text="Фильтры:" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Height="40" Margin="135,12,135,11" Width="142" />
+        <StackPanel  Grid.Row="1" Margin="10 20">
+
+            <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
+            <TextBox Height="50" Margin="0 0 0 20" >
+
+            </TextBox >
+            <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
+
+                </TextBox >
+                <ComboBox Width="30" Height="30">
+
+                </ComboBox>
+            </StackPanel>
+
+            <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
+            <ComboBox Height="50"  Margin="0 0 0 20">
+
+            </ComboBox>
+
+            <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
+            <ComboBox Height="50"  Margin="0 0 0 20">
+
+            </ComboBox>
+
+            <Grid Height="360">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75*"/>
+                    <ColumnDefinition Width="32*"/>
+                    <ColumnDefinition Width="89*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68*"/>
+                    <RowDefinition Height="191*"/>
+                    <RowDefinition Height="101*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="|" Grid.Column="1" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Height="52" Margin="27,8" Width="10"></TextBlock>
+                <TextBox materialDesign:HintAssist.Hint="От" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                <TextBox materialDesign:HintAssist.Hint="До" Grid.Column="2" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                <Button Content="Добавить новый заказ" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" Background="Transparent" Foreground="Black" BorderBrush="Green" Height="80" Width="250" ></Button>
+                <Button Click="Back_Click" Content="Назад на главную" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Background="Transparent" Foreground="Black" BorderBrush="Blue"  Height="80" Width="250" ></Button>
+
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Page>

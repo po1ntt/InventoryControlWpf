@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Add"
         mc:Ignorable="d"
-        Title="AddBrand" Height="450" Width="800">
+        Title="Brand" Height="600" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="483*"/>
+            <RowDefinition Height="48*"/>
+        </Grid.RowDefinitions>
+
     </Grid>
 </Window>
