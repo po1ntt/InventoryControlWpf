@@ -40,6 +40,7 @@ namespace InventoryControl.Service
                        
                     });
                     result = "Новая техника успешно добавлена";
+                    context.SaveChanges();
                 }
                 else
                 {

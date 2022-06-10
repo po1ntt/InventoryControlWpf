@@ -29,7 +29,7 @@ namespace InventoryControl.Service
             {
                 var depEquip = context.DepartamentEquipment.FirstOrDefault(p => p.id_equipdep == id_equip);
                
-                if (depEquip != null)
+                if (depEquip == null)
                 {
                     context.DepartamentEquipment.Add(new DepartamentEquipment
                     {
@@ -39,6 +39,7 @@ namespace InventoryControl.Service
                         count = count
                     });
                     result = "Запись успешно добавлена";
+                    context.SaveChanges();
                 }
                 else
                 {

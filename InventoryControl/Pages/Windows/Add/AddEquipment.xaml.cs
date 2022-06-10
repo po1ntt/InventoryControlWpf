@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using InventoryControl.Service;
+using InventoryControl.BdWork;
 namespace InventoryControl.Pages.Windows.Add
 {
     /// <summary>
@@ -22,6 +23,21 @@ namespace InventoryControl.Pages.Windows.Add
         public AddEquipment()
         {
             InitializeComponent();
+            BrandSelected.ItemsSource = BrandService.GetBrandInfo();
+            TypeTech.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(BrandSelected.SelectedItem != null && TypeTech.SelectedItem != null)
+            {
+                var brand = BrandSelected.SelectedItem as Brand;
+                var typetech = TypeTech.SelectedItem as TypeOfEquipment;
+                string result = Service.EquipmentService.addEquipment(NameEquip.Text, brand.id_brand, typetech.id_typeEquip);
+                MessageBox.Show(result);
+
+            }
         }
     }
 }

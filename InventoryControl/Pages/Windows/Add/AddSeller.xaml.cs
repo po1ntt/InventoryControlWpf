@@ -23,5 +23,11 @@ namespace InventoryControl.Pages.Windows.Add
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string result = Service.SellerService.AddSeller(namepost.Text);
+            MessageBox.Show(result);
+        }
     }
 }

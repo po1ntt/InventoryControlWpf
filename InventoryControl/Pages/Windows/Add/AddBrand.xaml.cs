@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InventoryControl.Service;
 
 namespace InventoryControl.Pages.Windows.Add
 {
@@ -22,6 +23,13 @@ namespace InventoryControl.Pages.Windows.Add
         public AddBrand()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string result = BrandService.AddBrand(BrandName.Text);
+            MessageBox.Show(result);
+            
         }
     }
 }

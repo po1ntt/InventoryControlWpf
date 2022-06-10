@@ -24,5 +24,11 @@ namespace InventoryControl.Pages
         {
             InitializeComponent();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Frame.FrameOBJ.Navigate(new HomePage());
+
+        }
     }
 }

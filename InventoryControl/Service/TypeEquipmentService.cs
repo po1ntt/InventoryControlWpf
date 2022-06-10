@@ -22,5 +22,31 @@ namespace InventoryControl.Service
             }
             return Collection;
         }
+        public static string AddTypeEquipment(string typeEquip)
+        {
+            string result = "Ошибка";
+
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var type = context.TypeOfEquipment.FirstOrDefault(p => p.NameTypeEquip == typeEquip);
+                if (type!=null)
+                {
+
+                    result = "тип техники уже существует";
+                }
+                else
+                {
+                    context.TypeOfEquipment.Add(new TypeOfEquipment
+                    {
+                        id_typeEquip = context.TypeOfEquipment.Count() + 1,
+                        NameTypeEquip = typeEquip
+
+                    });
+                    result = "Новый тип техники успешно добавлен";
+                    context.SaveChanges();
+                }
+            }
+            return result;
+        }
     }
 }

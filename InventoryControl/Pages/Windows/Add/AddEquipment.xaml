@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Add"
         mc:Ignorable="d"
-        Title="AddEquipment" Height="450" Width="800">
+        Title="AddEquipment" Height="600" Width="400"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="438*"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление техники" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
+            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="NameEquip"  FontSize="20px"></TextBox>
+            <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Бренд" FontSize="20px" x:Name="BrandSelected" DisplayMemberPath="namebrand"></ComboBox>
+            <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Тип техники"   FontSize="20px" x:Name="TypeTech" DisplayMemberPath="name"></ComboBox>
+
+        </StackPanel>
+
+        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>
     </Grid>
 </Window>

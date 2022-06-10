@@ -123,6 +123,7 @@
     <Compile Include="BdWork\WarehouseEquipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Base.cs" />
     <Compile Include="Classes\Filters.cs" />
     <Compile Include="Pages\AboutEquipPage.xaml.cs">
       <DependentUpon>AboutEquipPage.xaml</DependentUpon>
@@ -153,6 +154,9 @@
     </Compile>
     <Compile Include="Pages\Windows\Add\AddTypeEquipment.xaml.cs">
       <DependentUpon>AddTypeEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Windows\Add\NewOrder.xaml.cs">
+      <DependentUpon>NewOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Windows\Edit\EditBrand.xaml.cs">
       <DependentUpon>EditBrand.xaml</DependentUpon>
@@ -232,6 +236,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Windows\Add\AddTypeEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\Add\NewOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -38,6 +38,7 @@ namespace InventoryControl.Service
                     
                 });
                 result = "Запись успешно добавлена";
+                context.SaveChanges();
             }
             return result;
         }

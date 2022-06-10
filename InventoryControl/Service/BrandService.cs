@@ -29,7 +29,7 @@ namespace InventoryControl.Service
             using(InventoryСontrolEntities context = new InventoryСontrolEntities())
             {
                 var brand = context.Brand.FirstOrDefault(p => p.namebrand == namebrand);
-                 if(brand.namebrand == namebrand)
+                 if(brand != null)
                 {
                     
                     result = "Бренд уже существует";
@@ -43,6 +43,7 @@ namespace InventoryControl.Service
                         
                     });
                     result = "Новый бренд успешно добавлен";
+                    context.SaveChanges();
                 }
             }
             return result;

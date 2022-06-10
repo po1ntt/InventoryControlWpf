@@ -22,5 +22,32 @@ namespace InventoryControl.Service
             }
             return Collection;
         }
+        public static string AddSeller(string namesellerr)
+        {
+            string result = "Ошибка";
+
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var brand = context.Seller.FirstOrDefault(p => p.nameSeller == namesellerr);
+                if (brand != null)
+                {
+
+                    result = "Продавец уже существует";
+                }
+                else
+                {
+                    context.Seller.Add(new Seller
+                    {
+                        id_seller = context.Seller.Count() + 1,
+                        nameSeller = namesellerr
+
+                    });
+                    result = "Новый поставщик успешно добавлен";
+                    context.SaveChanges();
+                }
+            }
+            return result;
+        }
+
     }
 }

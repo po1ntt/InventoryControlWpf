@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace InventoryControl.Pages.Windows.Add
 {
     /// <summary>
-    /// Логика взаимодействия для AddTypeEquipment.xaml
+    /// Логика взаимодействия для NewOrder.xaml
     /// </summary>
-    public partial class AddTypeEquipment : Window
+    public partial class NewOrder : Window
     {
-        public AddTypeEquipment()
+        public NewOrder()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string result = Service.TypeEquipmentService.AddTypeEquipment(typeEquip.Text);
-            MessageBox.Show(result);
         }
     }
 }

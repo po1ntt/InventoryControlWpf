@@ -28,7 +28,7 @@ namespace InventoryControl.Service
             using (InventoryСontrolEntities context = new InventoryСontrolEntities())
             {
                 var departament = context.Departament.FirstOrDefault(p => p.name_departament == namedep);
-                if(departament != null)
+                if(departament == null)
                 {
                     context.Departament.Add(new Departament 
                     { 
@@ -37,6 +37,7 @@ namespace InventoryControl.Service
                         
                     });
                     result = "Новый департамент успешно добавлен";
+                    context.SaveChanges();
                 }
                 else
                 {

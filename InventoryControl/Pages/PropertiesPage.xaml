@@ -29,7 +29,7 @@
                             <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый бренд" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                            <Button Grid.Column="1" Content="Новый бренд" Background="Transparent" BorderBrush="Green" Foreground="Black" Click="AddBrand_Click" Width="200">
 
                             </Button>
                         </Grid>
@@ -37,6 +37,11 @@
                     <ScrollViewer Grid.Row="1">
                         <Grid>
                             <DataGrid x:Name="DgBrand" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Название бренда" Width="*" Binding="{Binding namebrand}">
 
@@ -47,7 +52,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Edit_Brand_Click">
                                                     <Image Source="/images/Edit.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -90,7 +95,7 @@
                             <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый тип техники" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                            <Button Grid.Column="1" Content="Новый тип техники" Background="Transparent" BorderBrush="Green" Click="AddType_Click" Foreground="Black" Width="200">
 
                             </Button>
                         </Grid>
@@ -98,6 +103,11 @@
                     <ScrollViewer Grid.Row="1">
                         <Grid >
                             <DataGrid x:Name="DgType" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Тип техники" Width="*" Binding="{Binding NameTypeEquip}">
 
@@ -108,7 +118,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Edit_Type_Click">
                                                     <Image Source="/images/Edit.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -151,7 +161,7 @@
                             <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый поставщик" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                            <Button Grid.Column="1" Content="Новый поставщик" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddSeller_Click">
                                 
                             </Button>
                         </Grid>
@@ -159,6 +169,11 @@
                     <ScrollViewer Grid.Row="1">
                         <Grid>
                             <DataGrid  x:Name="DgSellers" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Поставщик" Width="*" Binding="{Binding nameSeller}">
 
@@ -169,7 +184,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Edit_Seller_Click">
                                                     <Image Source="/images/Edit.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -214,7 +229,7 @@
                             <Button Click="BackToMainClick"  Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новая техника" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                            <Button Grid.Column="1" Content="Новая техника" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddEquipment_Click">
 
                             </Button>
                         </Grid>
@@ -222,6 +237,11 @@
                     <ScrollViewer Grid.Row="1">
                         <Grid >
                             <DataGrid x:Name="DgEquipment" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Название техники" Width="*" Binding="{Binding name}">
 
@@ -235,7 +255,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Edit_Equipment_Click">
                                                     <Image Source="/images/Edit.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -275,7 +295,7 @@
                             <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый отдел" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200">
+                            <Button Grid.Column="1" Content="Новый отдел" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddDepartament_Click">
 
                             </Button>
                         </Grid>
@@ -283,6 +303,11 @@
                     <ScrollViewer Grid.Row="1">
                         <Grid>
                             <DataGrid  x:Name="DgDepartament" AutoGenerateColumns="False" IsReadOnly="True">
+                                <DataGrid.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                                    </ContextMenu>
+                                </DataGrid.ContextMenu>
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Название отдела" Width="*" Binding="{Binding name_departament}">
 
@@ -293,7 +318,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Edit_Departament_Click">
                                                     <Image Source="/images/Edit.png"></Image>
                                                 </Button>
                                             </DataTemplate>

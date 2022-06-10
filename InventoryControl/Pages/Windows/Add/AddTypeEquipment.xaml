@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Add"
         mc:Ignorable="d"
-        Title="AddTypeEquipment" Height="450" Width="800">
+        Title="AddTypeEquipment" Height="600" Width="400"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="438*"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление типа техники" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
+            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название типа техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="typeEquip" FontSize="20px"></TextBox>
+        </StackPanel>
+
+        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>
     </Grid>
 </Window>
