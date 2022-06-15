@@ -8,7 +8,8 @@
       d:DesignHeight="1000" d:DesignWidth="1200"
       Title="HomePage"
       Background="White"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -22,12 +23,19 @@
         <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Управление свойствами" Click="PropertiesClick" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
             <Button Content="Заказы" Click="OrdersClick" Margin="0 0 20 0"  Foreground="Black"  Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-            <Button Content="Добавление новой техники"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+            <Button Content="Добавление новой техники" Click="WarehouseAdd_Click"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+            <Button Content="Департаменты" Click="DepartamentClick" Margin="0 0 20 0"  Foreground="Black"  Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <Grid >
                 <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                     <DataGrid.Columns>
+                        
                         <DataGridTextColumn Header="Название" Width="250" Binding="{Binding Equipment.name}">
 
                         </DataGridTextColumn>
@@ -62,6 +70,15 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="AddDepartamentEquipment" Foreground="Black" Height="50" Content="Отправить в департамент"  Background="Transparent">
+                                      
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
@@ -92,7 +109,7 @@
             <ComboBox Height="50"  Margin="0 0 0 20">
 
             </ComboBox>
-           
+            <Button Background="Green" BorderBrush="Green" Click="Excel_Click">Экспорт Excel</Button>
             <Grid Height="300">
              
 

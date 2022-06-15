@@ -13,12 +13,12 @@
             <RowDefinition Height="438*"/>
             <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Добавление бренда" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
+        <TextBlock Text="Добавление техники на склад" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
-            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название бренда" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="20px"></TextBox>
+            <ComboBox x:Name="EquipmentCombo" DisplayMemberPath="name" Grid.Row="1" materialDesign:HintAssist.Hint="Выберите технику" FontSize="20px"></ComboBox>
+            <TextBox x:Name="txbCount" Grid.Row="1" materialDesign:HintAssist.Hint="Кол-во техники" FontSize="20px"></TextBox>
         </StackPanel>
 
-        <Button Content="Сохранить" Grid.Row="2" Height="70" ></Button>
+        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>
     </Grid>
 </Window>

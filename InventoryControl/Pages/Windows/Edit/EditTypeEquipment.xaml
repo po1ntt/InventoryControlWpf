@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Редактирование типа техники" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
-            <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
-            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название типа техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="20px"></TextBox>
+            <TextBlock Text="{Binding name}" x:Name="typetotext" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
+            <TextBox Grid.Row="1" x:Name="txbType" materialDesign:HintAssist.Hint="Название типа техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="20px"></TextBox>
         </StackPanel>
 
-        <Button Content="Сохранить" Grid.Row="2" Height="70" ></Button>
+        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>
     </Grid>
 </Window>

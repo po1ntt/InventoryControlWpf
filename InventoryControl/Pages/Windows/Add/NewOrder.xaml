@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Add"
         mc:Ignorable="d"
-        Title="NewOrder" Height="450" Width="800">
+        Title="NewOrder" Height="600" Width="400"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="438*"/>
+            <RowDefinition Height="83*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление техники на склад" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
+        <StackPanel Grid.Row="1">
+            <ComboBox Grid.Row="1" x:Name="comboequip" DisplayMemberPath="name" materialDesign:HintAssist.Hint="Выберите технику" FontSize="20px"></ComboBox>
+            <ComboBox Grid.Row="1" x:Name="comboseller" DisplayMemberPath="nameSeller" materialDesign:HintAssist.Hint="Выберите поставщика" FontSize="20px"></ComboBox>
+            <TextBox Grid.Row="1" x:Name="countteh" materialDesign:HintAssist.Hint="Кол-во техники" FontSize="20px"></TextBox>
+            <TextBox Grid.Row="1" x:Name="price" materialDesign:HintAssist.Hint="Цена за одну штуку" FontSize="20px"></TextBox>
+        </StackPanel>
+
+        <Button Content="Сохранить" Click="Button_Click" Grid.Row="2" Height="70" ></Button>
     </Grid>
 </Window>

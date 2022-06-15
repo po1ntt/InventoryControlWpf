@@ -22,6 +22,17 @@ namespace InventoryControl.Pages.Windows.Add
         public NewOrder()
         {
             InitializeComponent();
+            comboequip.ItemsSource = Service.EquipmentService.GetEquipmentInfo();
+            comboseller.ItemsSource = Service.SellerService.GetSellerInfo();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var equip = comboequip.SelectedItem as BdWork.Equipment;
+            var seller = comboseller.SelectedItem as BdWork.Seller;
+            string result = Service.OrdersService.addOrder(Convert.ToInt32(countteh.Text), equip.id_equip, seller.id_seller, Convert.ToInt32(price.Text));
+            MessageBox.Show(result);
         }
     }
 }

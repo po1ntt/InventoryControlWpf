@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InventoryControl.Service;
+using InventoryControl.BdWork;
 
 namespace InventoryControl.Pages.Windows.Add
 {
@@ -22,6 +24,14 @@ namespace InventoryControl.Pages.Windows.Add
         public AddToWareHouseEquip()
         {
             InitializeComponent();
+            EquipmentCombo.ItemsSource = Service.EquipmentService.GetEquipmentInfo();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var equipment = EquipmentCombo.SelectedItem as Equipment;
+            string result = Service.WarehouseEquipService.AddNewEquipmentToWarehouse(equipment.id_equip, Convert.ToInt32(txbCount.Text));
+            MessageBox.Show(result);
         }
     }
 }

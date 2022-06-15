@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InventoryControl.BdWork;
+using InventoryControl.Service;
 
 namespace InventoryControl.Pages.Windows.Edit
 {
@@ -22,6 +24,11 @@ namespace InventoryControl.Pages.Windows.Edit
         public EditTypeEquipment()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

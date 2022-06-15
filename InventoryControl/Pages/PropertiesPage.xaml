@@ -22,16 +22,17 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
 
-                                <ColumnDefinition Width="251*"/>
-                                <ColumnDefinition Width="549*"/>
+                                <ColumnDefinition Width="376*"/>
+                                <ColumnDefinition Width="295*"/>
+                                <ColumnDefinition Width="529*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10,14" Height="Auto" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый бренд" Background="Transparent" BorderBrush="Green" Foreground="Black" Click="AddBrand_Click" Width="200">
+                            <Button Grid.Column="2" Content="Новый бренд" Height="30" Width="200" Background="Transparent" BorderBrush="Green" Foreground="Black" Click="AddBrand_Click" />
+                            <Button Grid.Column="1" Background="Green" BorderBrush="Green" Click="Excel_ClickBrand" Margin="0,13" Height="Auto">Экспорт Excel</Button>
 
-                            </Button>
                         </Grid>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
@@ -71,7 +72,7 @@
                             </DataGrid>
                         </Grid>
                     </ScrollViewer>
-                   
+
 
 
 
@@ -88,16 +89,17 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
 
-                                <ColumnDefinition Width="251*"/>
-                                <ColumnDefinition Width="549*"/>
+                                <ColumnDefinition Width="393*"/>
+                                <ColumnDefinition Width="275*"/>
+                                <ColumnDefinition Width="532*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10,14" Height="Auto" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый тип техники" Background="Transparent" BorderBrush="Green" Click="AddType_Click" Foreground="Black" Width="200">
+                            <Button Grid.Column="2" Content="Новый тип техники" Background="Transparent" BorderBrush="Green" Click="AddType_Click" Foreground="Black" Margin="28,13,312,13" Height="Auto"/>
+                            <Button Grid.Column="1" Background="Green" BorderBrush="Green" Click="Excel_ClickType" Margin="0,13" Height="Auto" >Экспорт Excel</Button>
 
-                            </Button>
                         </Grid>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
@@ -137,7 +139,7 @@
                             </DataGrid>
                         </Grid>
                     </ScrollViewer>
-                    
+
 
 
 
@@ -148,22 +150,23 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="154*"/>
-                        
+
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Grid>
                             <Grid.ColumnDefinitions>
 
-                                <ColumnDefinition Width="251*"/>
-                                <ColumnDefinition Width="549*"/>
+                                <ColumnDefinition Width="376*"/>
+                                <ColumnDefinition Width="277*"/>
+                                <ColumnDefinition Width="547*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+                            <Button  Click="BackToMainClick" Content="Назад на главную" Margin="10,14" Height="Auto" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый поставщик" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddSeller_Click">
-                                
-                            </Button>
+                            <Button Grid.Column="2" Content="Новый поставщик" Background="Transparent" BorderBrush="Green" Foreground="Black" Click="AddSeller_Click"  Height="40" Width="300"/>
+                            <Button Grid.Column="1" Background="Green" BorderBrush="Green" Click="Excel_ClickSeller" Margin="0,13" Height="Auto"  >Экспорт Excel</Button>
+
                         </Grid>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
@@ -205,8 +208,8 @@
                         </Grid>
 
                     </ScrollViewer>
-                   
-                   
+
+
 
 
                 </Grid>
@@ -222,16 +225,17 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
 
-                                <ColumnDefinition Width="251*"/>
-                                <ColumnDefinition Width="549*"/>
+                                <ColumnDefinition Width="376*"/>
+                                <ColumnDefinition Width="299*"/>
+                                <ColumnDefinition Width="525*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Button Click="BackToMainClick"  Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+                            <Button Click="BackToMainClick"  Content="Назад на главную" Margin="10,14" Height="Auto" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новая техника" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddEquipment_Click">
+                            <Button Grid.Column="2" Content="Новая техника" Background="Transparent" BorderBrush="Green" Foreground="Black" Click="AddEquipment_Click" Margin="13,13,312,13" Height="Auto"/>
+                            <Button Grid.Column="1" Background="Green" BorderBrush="Green" Click="Excel_ClickEquipment" Margin="0,13" Height="Auto" >Экспорт Excel</Button>
 
-                            </Button>
                         </Grid>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
@@ -288,16 +292,19 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
 
-                                <ColumnDefinition Width="251*"/>
-                                <ColumnDefinition Width="549*"/>
+                                <ColumnDefinition Width="376*"/>
+                                <ColumnDefinition Width="319*"/>
+                                <ColumnDefinition Width="506*"/>
 
                             </Grid.ColumnDefinitions>
-                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10" Height="30" Grid.Column="0"  >
+                            <Button Click="BackToMainClick" Content="Назад на главную" Margin="10,14" Height="30" Grid.Column="0"  >
 
                             </Button>
-                            <Button Grid.Column="1" Content="Новый отдел" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddDepartament_Click">
+                            <Button Grid.Column="2" Content="Новый отдел" Background="Transparent" BorderBrush="Green" Foreground="Black" Width="200" Click="AddDepartament_Click"  >
 
                             </Button>
+                            <Button Grid.Column="1" Background="Green" BorderBrush="Green" Click="Excel_ClickDepartament" Margin="0,13" Height="Auto"  >Экспорт Excel</Button>
+
                         </Grid>
                     </Grid>
                     <ScrollViewer Grid.Row="1">
@@ -338,7 +345,7 @@
                             </DataGrid>
                         </Grid>
                     </ScrollViewer>
-                  
+
 
 
 

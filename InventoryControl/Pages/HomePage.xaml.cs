@@ -15,7 +15,15 @@ using System.Windows.Shapes;
 using InventoryControl.Service;
 using InventoryControl.BdWork;
 using System.Collections.ObjectModel;
-
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using Page = Microsoft.Office.Interop.Excel.Page;
+using System.Threading;
+using System.IO;
+using Microsoft.Win32;
+using System.Windows.Forms;
+using InventoryControl.Classes;
+using InventoryControl.Pages.Windows.Add;
 
 namespace InventoryControl.Pages
 {
@@ -38,7 +46,7 @@ namespace InventoryControl.Pages
 
         private void NameFilter(object sender, TextChangedEventArgs e)
         {
-            string name = ((TextBox)sender).Text;
+            string name = ((System.Windows.Controls.TextBox)sender).Text;
             if(name != null)
             {
                 WareHouseEquipDG.ItemsSource = null;
@@ -55,6 +63,72 @@ namespace InventoryControl.Pages
         private void OrdersClick(object sender, RoutedEventArgs e)
         {
             Classes.Frame.FrameOBJ.Navigate(new OrdersPage());
+        }
+        private void DepartamentClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Frame.FrameOBJ.Navigate(new DepartamentPage());
+        }
+
+        public HeaderFooter LeftHeader => throw new NotImplementedException();
+
+        public HeaderFooter CenterHeader => throw new NotImplementedException();
+
+        public HeaderFooter RightHeader => throw new NotImplementedException();
+
+        public HeaderFooter LeftFooter => throw new NotImplementedException();
+
+        public HeaderFooter CenterFooter => throw new NotImplementedException();
+
+        public HeaderFooter RightFooter => throw new NotImplementedException();
+
+        private void Excel_Click(object sender, RoutedEventArgs e)
+        {
+            Stream myStream;
+            System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+           
+            saveFileDialog1.Filter = "EXCEL Files (*.xlsx)|*.xlsx|EXCEL Files 2003 (*.xls)|*.xls|All files (*.*)|*.*";
+            
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    var path = saveFileDialog1.FileName;
+                    myStream.Close();
+                    WareHouseEquipDG.SelectAllCells();
+                    WareHouseEquipDG.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+                    ApplicationCommands.Copy.Execute(null, WareHouseEquipDG);
+                    String resultat = (string)System.Windows.Clipboard.GetData(System.Windows.DataFormats.CommaSeparatedValue);
+                    String result = (string)System.Windows.Clipboard.GetData(System.Windows.DataFormats.Text);
+                    WareHouseEquipDG.UnselectAllCells();
+                    System.IO.StreamWriter file1 = new System.IO.StreamWriter(path, true, System.Text.Encoding.GetEncoding(1251));
+                    file1.WriteLine(result.Replace(',', ' '));
+                    file1.Close();
+                   
+                }
+            }
+           
+
+
+            System.Windows.MessageBox.Show("Файл успешно создан!");
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            WareHouseEquipDG.ItemsSource = null;
+            WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
+
+        }
+
+        private void WarehouseAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Base.OpenCenterPosAndOpen(new AddToWareHouseEquip());
+
+        }
+
+        private void AddDepartamentEquipment(object sender, RoutedEventArgs e)
+        {
+            Base.OpenCenterPosAndOpen(new AddToDepartamentEquipment(WareHouseEquipDG.SelectedItem as WarehouseEquipment));
         }
     }
 }

@@ -23,5 +23,10 @@ namespace InventoryControl.Pages.Windows.Edit
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

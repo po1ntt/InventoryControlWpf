@@ -20,10 +20,16 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="324,0" Width="140">
             <TextBlock Text="Заказы" VerticalAlignment="Center" FontSize="40" FontWeight="Bold"></TextBlock>
+            
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <Grid >
                 <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Название" Width="0.25*" Binding="{Binding Equipment.name}" IsReadOnly="True">
 
@@ -45,7 +51,7 @@
 
 
                         </materialDesign:DataGridTextColumn>
-                        <DataGridComboBoxColumn  Header="Статус" Width="0.30*" x:Name="comboOrder"  SelectedValuePath="id_status" materialDesign:ComboBoxAssist.ClassicMode="False" SelectedValueBinding="{Binding Path=id_status}" DisplayMemberPath="status1" IsReadOnly="False">
+                        <DataGridComboBoxColumn  Header="Статус" Width="0.30*" x:Name="comboOrder" SelectedValuePath="id_status" materialDesign:ComboBoxAssist.ClassicMode="False" SelectedValueBinding="{Binding Path=id_status}" DisplayMemberPath="status1" IsReadOnly="False">
                             
                         </DataGridComboBoxColumn>
                         <DataGridTemplateColumn>
@@ -87,6 +93,7 @@
             <ComboBox Height="50"  Margin="0 0 0 20">
 
             </ComboBox>
+            <Button Background="Green" BorderBrush="Green" Click="Excel_Click">Экспорт Excel</Button>
 
             <Grid Height="360">
                 <Grid.ColumnDefinitions>
@@ -102,7 +109,7 @@
                 <TextBlock Text="|" Grid.Column="1" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center" Height="52" Margin="27,8" Width="10"></TextBlock>
                 <TextBox materialDesign:HintAssist.Hint="От" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                 <TextBox materialDesign:HintAssist.Hint="До" Grid.Column="2" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-                <Button Content="Добавить новый заказ" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" Background="Transparent" Foreground="Black" BorderBrush="Green" Height="80" Width="250" ></Button>
+                <Button Content="Добавить новый заказ" Click="Button_Click" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" Background="Transparent" Foreground="Black" BorderBrush="Green" Height="80" Width="250" ></Button>
                 <Button Click="Back_Click" Content="Назад на главную" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Background="Transparent" Foreground="Black" BorderBrush="Blue"  Height="80" Width="250" ></Button>
 
             </Grid>

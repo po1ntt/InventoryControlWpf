@@ -22,6 +22,6 @@
 
         </StackPanel>
 
-        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>
+        <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click"></Button>
     </Grid>
 </Window>

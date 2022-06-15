@@ -5,16 +5,17 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace InventoryControl.Service
 {
     class EquipmentDepartamentService
     {
-        public static ObservableCollection<DepartamentEquipment> GetEquipmentDepartamentInfo()
+        public static ObservableCollection<DepartamentEquipment> GetEquipmentDepartamentInfo(string namedep)
         {
             InventoryСontrolEntities context = new InventoryСontrolEntities();
             var Collection = new ObservableCollection<DepartamentEquipment>();
-            var items = context.DepartamentEquipment.ToList();
+            var items = context.DepartamentEquipment.ToList().Where(p => p.Departament.name_departament == namedep);
             foreach (var item in items)
             {
 
@@ -25,37 +26,50 @@ namespace InventoryControl.Service
         public static string addDepartamentEquipment(int id_equip, int id_dep, int count)
         {
             string result = "Ошибка";
+            
             using(InventoryСontrolEntities context = new InventoryСontrolEntities())
             {
-                var depEquip = context.DepartamentEquipment.FirstOrDefault(p => p.id_equipdep == id_equip);
-               
-                if (depEquip == null)
+
+                var depEquip = context.DepartamentEquipment.FirstOrDefault(p => p.id_equipdep == id_equip && p.Departament.id_departament == id_dep);
+                var warehouseequip = context.WarehouseEquipment.FirstOrDefault(p => p.id_equipment == id_equip);
+                int countwarehouse = Convert.ToInt32(warehouseequip.count);
+                if(count > countwarehouse)
                 {
-                    context.DepartamentEquipment.Add(new DepartamentEquipment
-                    {
-                        id_depEquip = context.DepartamentEquipment.Count() + 1,
-                        id_dep = id_dep,
-                        id_equipdep = id_equip,
-                        count = count
-                    });
-                    result = "Запись успешно добавлена";
-                    context.SaveChanges();
+                    MessageBox.Show("Введенное кол-во больше чем есть на складе");
                 }
                 else
                 {
-                    if (count != 0)
+                    if (depEquip == null)
                     {
-                        var depEquipment = context.DepartamentEquipment.Where(p => p.id_equipdep == id_equip).FirstOrDefault();
-                        depEquipment.count = depEquipment.count + count;
+                        context.DepartamentEquipment.Add(new DepartamentEquipment
+                        {
+                            id_depEquip = context.DepartamentEquipment.Count() + 1,
+                            id_dep = id_dep,
+                            id_equipdep = id_equip,
+                            count = count
+                        });
+                        result = "Запись успешно добавлена";
+                        warehouseequip.count = Convert.ToString(Convert.ToInt32(warehouseequip.count) - count);
                         context.SaveChanges();
-                        result = "Обновлено количество техники";
                     }
                     else
                     {
-                        result = "Запись уже существует и количество новой техники равно 0, ничего не изменилось";
-                    }
+                        if (count != 0)
+                        {
+                            var depEquipment = context.DepartamentEquipment.Where(p => p.id_equipdep == id_equip).FirstOrDefault();
+                            depEquipment.count = depEquipment.count + count;
+                            warehouseequip.count = Convert.ToString(Convert.ToInt32(warehouseequip.count) - count);
+                            context.SaveChanges();
+                            result = "Обновлено количество техники";
+                        }
+                        else
+                        {
+                            result = "Запись уже существует и количество новой техники равно 0, ничего не изменилось";
+                        }
 
+                    }
                 }
+               
             }
             return result;
         }

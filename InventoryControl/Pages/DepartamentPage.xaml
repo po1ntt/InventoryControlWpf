@@ -16,18 +16,22 @@
             <RowDefinition Height="937*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="211*"/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox materialDesign:HintAssist.Hint="Департамент" Height="50" MaxWidth="400" MinWidth="300" HorizontalAlignment="Left" Margin="0 0 100 0"></ComboBox>
-            <Button Content="Назад" Click="Back_Click" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-            <Button Content="Добавить технику со склада"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-         
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3,0,41,0" Width="881">
+            <ComboBox x:Name="DepCombo" Margin="100 0 100 0"  SelectionChanged="DepCombo_SelectionChanged" DisplayMemberPath="name_departament" FontSize="30px" materialDesign:HintAssist.Hint="Департамент" Height="50" MaxWidth="400" MinWidth="300" HorizontalAlignment="Left"></ComboBox>
+            <Button Content="Добавить технику со склада" Click="AddToDep_Click"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+
         </StackPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="1">
             <Grid >
-                <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid x:Name="DepartamentEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Название" Width="250" Binding="{Binding Equipment.name}">
 
@@ -93,6 +97,8 @@
             <ComboBox Height="50"  Margin="0 0 0 20">
 
             </ComboBox>
+            <Button Background="Green" Margin="0 0 0 30" BorderBrush="Green" Click="Excel_Click">Экспорт Excel</Button>
+            <Button Content="Назад" Click="Back_Click" HorizontalAlignment="Center" Width="200" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
 
             <Grid Height="300">
 
