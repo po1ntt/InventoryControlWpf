@@ -19,6 +19,7 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 using InventoryControl.Classes;
 using InventoryControl.Pages.Windows.Add;
+using InventoryControl.Pages.Windows.Edit;
 
 namespace InventoryControl.Pages
 {
@@ -79,6 +80,12 @@ namespace InventoryControl.Pages
         {
             WareHouseEquipDG.ItemsSource = null;
             WareHouseEquipDG.ItemsSource = Service.OrdersService.GetOrdersInfo();
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Base.OpenCenterPosAndOpen(new EditOrderStatus(WareHouseEquipDG.SelectedItem as Orders));
 
         }
     }

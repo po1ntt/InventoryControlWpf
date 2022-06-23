@@ -47,6 +47,8 @@
           <Property Name="seller_id" Type="int" />
           <Property Name="priceForOne" Type="int" />
           <Property Name="id_status" Type="int" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateOver" Type="date" />
         </EntityType>
         <EntityType Name="Seller">
           <Key>
@@ -314,6 +316,8 @@
           <Property Name="seller_id" Type="Int32" />
           <Property Name="priceForOne" Type="Int32" />
           <Property Name="id_status" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateOver" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_Orders_Equipment" FromRole="Orders" ToRole="Equipment" />
           <NavigationProperty Name="Seller" Relationship="Self.FK_Orders_Seller" FromRole="Orders" ToRole="Seller" />
           <NavigationProperty Name="Status" Relationship="Self.FK_Orders_Status" FromRole="Orders" ToRole="Status" />
@@ -593,6 +597,8 @@
                 <ScalarProperty Name="seller_id" ColumnName="seller_id" />
                 <ScalarProperty Name="priceForOne" ColumnName="priceForOne" />
                 <ScalarProperty Name="id_status" ColumnName="id_status" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateOver" ColumnName="DateOver" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

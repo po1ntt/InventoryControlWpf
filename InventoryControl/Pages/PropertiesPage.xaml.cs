@@ -50,7 +50,7 @@ namespace InventoryControl.Pages
 
         private void Edit_Brand_Click(object sender, RoutedEventArgs e)
         {
-
+            Base.OpenCenterPosAndOpen(new EditBrand(DgBrand.SelectedItem as Brand));
         }
         private void Edit_Equipment_Click(object sender, RoutedEventArgs e)
         {

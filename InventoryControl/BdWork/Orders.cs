@@ -20,6 +20,8 @@ namespace InventoryControl.BdWork
         public Nullable<int> seller_id { get; set; }
         public Nullable<int> priceForOne { get; set; }
         public Nullable<int> id_status { get; set; }
+        public Nullable<System.DateTime> DateStart { get; set; }
+        public Nullable<System.DateTime> DateOver { get; set; }
     
         public virtual Equipment Equipment { get; set; }
         public virtual Seller Seller { get; set; }

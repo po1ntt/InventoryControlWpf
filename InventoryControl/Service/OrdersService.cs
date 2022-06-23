@@ -34,6 +34,7 @@ namespace InventoryControl.Service
                     Equipment_id = id_equip,
                     seller_id = seller_id,
                     priceForOne = price,
+                    DateStart = DateTime.Now,
                     Count = count
                     
                 });

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryControl.BdWork;
+using InventoryControl.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,18 @@ namespace InventoryControl.Pages.Windows.Edit
     /// </summary>
     public partial class EditBrand : Window
     {
-        public EditBrand()
+        public static Brand brand1;
+        public EditBrand(Brand brand)
         {
             InitializeComponent();
+            txbBrand.Text = brand.namebrand;
+            brand1 = brand;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string result = BrandService.EditBrand(brand1, txbBrand.Text);
+            MessageBox.Show(result);
         }
     }
 }

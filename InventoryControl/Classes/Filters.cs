@@ -16,22 +16,91 @@ namespace InventoryControl.Classes
             var Collection = new ObservableCollection<WarehouseEquipment>();
             var items = new List<WarehouseEquipment>();
             if (name != null || brand != null || type != null || count != null)
-            {  
-                if(name == null)
+            {
+                if (name == null && brand != null && type != null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.count == count && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip && p.Equipment.Brand.namebrand == brand.namebrand).ToList();
+
+                }
+                else if(brand == null && name != null && type != null && count != null){
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.count == count && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip ).ToList();
+
+                }
+                else if(brand != null && name != null && type == null && count != null)
                 {
 
-                }
-                else if(brand == null){
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.count == count && p.Equipment.Brand.namebrand == brand.namebrand).ToList();
 
                 }
-                else if(type == null){
-
-
-                }
-                else if(count != null){
+                else if(brand != null && name != null && type != null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip && p.Equipment.Brand.namebrand == brand.namebrand).ToList();
 
                 }
-                items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.count == count && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip && p.Equipment.Brand.namebrand == brand.namebrand).ToList();
+                else if (name == null && brand == null && type != null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.count == count && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip).ToList();
+
+                }
+                // name
+                else if (name != null && brand != null && type == null && count == null)
+                {
+
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.Equipment.Brand.namebrand == brand.namebrand).ToList();
+
+                }
+                else if (name != null && brand == null && type == null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.count == count).ToList();
+
+                }
+               
+                else if (name != null && brand == null && type != null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip).ToList();
+
+                }
+                // gdfgdf
+                // brand
+                else if (name == null && brand != null && type == null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.Brand.namebrand == brand.namebrand && p.count == count).ToList();
+
+                }
+
+                else if (name == null && brand != null && type != null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.Brand.namebrand == brand.namebrand && p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip).ToList();
+
+                }
+               // type
+
+                else if (name != null && brand == null && type == null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name) && p.count == count).ToList();
+
+                }
+                // по одному
+                else if (name != null && brand == null && type == null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.name.Contains(name)).ToList();
+
+                }
+                else if (name == null && brand != null && type == null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.Brand.namebrand == brand.namebrand).ToList();
+
+                }
+                else if (name == null && brand == null && type != null && count == null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.Equipment.TypeOfEquipment.NameTypeEquip == type.NameTypeEquip).ToList();
+
+                }
+                else if (name == null && brand == null && type == null && count != null)
+                {
+                    items = context.WarehouseEquipment.Where(p => p.count == count).ToList();
+
+                }
 
             }
            

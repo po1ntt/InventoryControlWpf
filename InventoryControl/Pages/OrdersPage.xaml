@@ -47,13 +47,29 @@
 
 
                         </materialDesign:DataGridTextColumn>
-                        <materialDesign:DataGridTextColumn Header="Цена за 1-ну" Width="0.15*" Binding="{Binding priceForOne}"  IsReadOnly="True">
+                        <materialDesign:DataGridTextColumn Header="Цена за 1-ну Руб" Width="0.15*" Binding="{Binding priceForOne}"  IsReadOnly="True">
 
 
                         </materialDesign:DataGridTextColumn>
                         <DataGridComboBoxColumn  Header="Статус" Width="0.30*" x:Name="comboOrder" SelectedValuePath="id_status" materialDesign:ComboBoxAssist.ClassicMode="False" SelectedValueBinding="{Binding Path=id_status}" DisplayMemberPath="status1" IsReadOnly="False">
                             
                         </DataGridComboBoxColumn>
+                        <materialDesign:DataGridTextColumn Header="Дата заказа" Width="0.15*" Binding="{Binding DateStart, StringFormat=dd.MM.yyyy}"  IsReadOnly="True">
+
+
+                        </materialDesign:DataGridTextColumn>
+                        <materialDesign:DataGridTextColumn Header="Пришел на склад:" Width="0.5*" Binding="{Binding DateOver, StringFormat=dd.MM.yyyy}"  IsReadOnly="True">
+
+
+                        </materialDesign:DataGridTextColumn>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="200" Foreground="Black" Content="Изменить статус заказа" Click="Button_Click_1" Height="50" Background="Transparent">
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

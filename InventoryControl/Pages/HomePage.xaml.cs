@@ -25,6 +25,7 @@ using System.Windows.Forms;
 using InventoryControl.Classes;
 using InventoryControl.Pages.Windows.Add;
 
+
 namespace InventoryControl.Pages
 {
     /// <summary>
@@ -35,7 +36,8 @@ namespace InventoryControl.Pages
         public HomePage()
         {
             InitializeComponent();
-          
+            bradncombo.ItemsSource = BrandService.GetBrandInfo();
+            typeofequip.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();
             WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
         }
 
@@ -43,21 +45,23 @@ namespace InventoryControl.Pages
         {
             Classes.Frame.FrameOBJ.Navigate(new PropertiesPage());
         }
+        public static Brand brand;
+        public static TypeOfEquipment type;
+        public static string count;
+        public static string NName;
 
         private void NameFilter(object sender, TextChangedEventArgs e)
         {
-            string name = ((System.Windows.Controls.TextBox)sender).Text;
-            if(name != null)
-            {
-                WareHouseEquipDG.ItemsSource = null;
-                WareHouseEquipDG.ItemsSource = WarehouseEquipService.GetWareHouseEquipmentNameFilter(name);
-            }
-            else
-            {
-                WareHouseEquipDG.ItemsSource = null;
-                WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
 
+            string name = ((System.Windows.Controls.TextBox)sender).Text;
+            NName = name;
+            if (name != null)
+            {
+                WareHouseEquipDG.ItemsSource = null;
+
+                WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersWareHouse(name, brand, type, count);
             }
+
         }
 
         private void OrdersClick(object sender, RoutedEventArgs e)
@@ -85,9 +89,9 @@ namespace InventoryControl.Pages
         {
             Stream myStream;
             System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-           
+
             saveFileDialog1.Filter = "EXCEL Files (*.xlsx)|*.xlsx|EXCEL Files 2003 (*.xls)|*.xls|All files (*.*)|*.*";
-            
+
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -105,10 +109,10 @@ namespace InventoryControl.Pages
                     System.IO.StreamWriter file1 = new System.IO.StreamWriter(path, true, System.Text.Encoding.GetEncoding(1251));
                     file1.WriteLine(result.Replace(',', ' '));
                     file1.Close();
-                   
+
                 }
             }
-           
+
 
 
             System.Windows.MessageBox.Show("Файл успешно создан!");
@@ -130,5 +134,33 @@ namespace InventoryControl.Pages
         {
             Base.OpenCenterPosAndOpen(new AddToDepartamentEquipment(WareHouseEquipDG.SelectedItem as WarehouseEquipment));
         }
+
+        private void bradncombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            brand = bradncombo.SelectedItem as Brand;
+
+            WareHouseEquipDG.ItemsSource = null;
+            WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersWareHouse(NName, brand, type, count);
+
+        }
+
+        private void typeofequip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            type = typeofequip.SelectedItem as TypeOfEquipment;
+            WareHouseEquipDG.ItemsSource = null;
+
+            WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersWareHouse(NName, brand, type, count);
+        }
+        private void DelFilters_Click(object sender, RoutedEventArgs e)
+        {
+            bradncombo.SelectedIndex = -1;
+            typeofequip.SelectedIndex = -1;
+            namefilter.Text = null;
+            countfilter.Text = null;
+            WareHouseEquipDG.ItemsSource = null;
+            WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
+
+        }
     }
 }
+
