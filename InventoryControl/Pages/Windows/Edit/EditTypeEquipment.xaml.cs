@@ -21,14 +21,18 @@ namespace InventoryControl.Pages.Windows.Edit
     /// </summary>
     public partial class EditTypeEquipment : Window
     {
-        public EditTypeEquipment()
+        public TypeOfEquipment type;
+        public EditTypeEquipment(TypeOfEquipment typeOfEquipment)
         {
             InitializeComponent();
+            type = typeOfEquipment;
+            txbType.Text = type.NameTypeEquip;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string result = TypeEquipmentService.EditTypeOf(type, txbType.Text);
+            MessageBox.Show(result);
         }
     }
 }

@@ -62,7 +62,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Delete_Brand_Click">
                                                     <Image Source="/images/Delete.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -129,7 +129,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Delete_Type_Click">
                                                     <Image Source="/images/Delete.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -196,7 +196,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Delete_Seller_Click">
                                                     <Image Source="/images/Delete.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -268,7 +268,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Delete_Equipment_Click">
                                                     <Image Source="/images/Delete.png"></Image>
                                                 </Button>
                                             </DataTemplate>
@@ -334,7 +334,7 @@
                                     <DataGridTemplateColumn>
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Width="50" Height="50" Background="Transparent">
+                                                <Button Width="50" Height="50" Background="Transparent" Click="Delete_Departament_Click">
                                                     <Image Source="/images/Delete.png"></Image>
                                                 </Button>
                                             </DataTemplate>

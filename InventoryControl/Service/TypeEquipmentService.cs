@@ -48,5 +48,43 @@ namespace InventoryControl.Service
             }
             return result;
         }
+        public static string EditTypeOf(TypeOfEquipment typeOfEquipment, string nametype)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var departament = context.TypeOfEquipment.FirstOrDefault(p => p.id_typeEquip == typeOfEquipment.id_typeEquip);
+                if (departament != null)
+                {
+                    departament.NameTypeEquip = nametype;
+                    context.SaveChanges();
+                    result = "Тип техники успешно изменен";
+                }
+                else
+                {
+                    result = "Передан null;(";
+                }
+            }
+            return result;
+        }
+        public static string DeleteType(TypeOfEquipment type)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var brandtodelete = context.TypeOfEquipment.FirstOrDefault(p => p.id_typeEquip == type.id_typeEquip);
+                if (brandtodelete != null)
+                {
+                    context.TypeOfEquipment.Remove(brandtodelete);
+                    context.SaveChanges();
+                    result = "Тип техники с названием " + type.NameTypeEquip + " успешно удален";
+                }
+                else
+                {
+                    result = "Господи опять null";
+                }
+            }
+            return result;
+        }
     }
 }

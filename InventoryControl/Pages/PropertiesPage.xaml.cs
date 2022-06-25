@@ -19,7 +19,7 @@ using InventoryControl.Pages.Windows.Add;
 using InventoryControl.Pages.Windows.Edit;
 using System.IO;
 using Microsoft.Win32;
-using System.Windows.Forms;
+
 
 namespace InventoryControl.Pages
 {
@@ -54,21 +54,83 @@ namespace InventoryControl.Pages
         }
         private void Edit_Equipment_Click(object sender, RoutedEventArgs e)
         {
+            Base.OpenCenterPosAndOpen(new EditEquipment(DgEquipment.SelectedItem as Equipment));
 
         }
         private void Edit_Type_Click(object sender, RoutedEventArgs e)
         {
+            Base.OpenCenterPosAndOpen(new EditTypeEquipment(DgType.SelectedItem as TypeOfEquipment));
 
         }
         private void Edit_Departament_Click(object sender, RoutedEventArgs e)
         {
+            Base.OpenCenterPosAndOpen(new EditDepartament(DgDepartament.SelectedItem as Departament));
 
         }
         private void Edit_Seller_Click(object sender, RoutedEventArgs e)
         {
+            Base.OpenCenterPosAndOpen(new EditSeller(DgSellers.SelectedItem as Seller));
 
         }
+        private void Delete_Brand_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Вы действительно хотите удалить выбранный обьект?","Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes){
+                string result = BrandService.DeleteBrand(DgBrand.SelectedItem as Brand);
+                MessageBox.Show(result);
+            }
+            else
+            {
 
+            }
+        }
+        private void Delete_Type_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить выбранный обьект?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                string result = TypeEquipmentService.DeleteType(DgType.SelectedItem as TypeOfEquipment);
+                MessageBox.Show(result);
+            }
+            else
+            {
+
+            }
+        }
+        private void Delete_Departament_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить выбранный обьект?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                string result = DepartamentService.DeleteDepartament(DgDepartament.SelectedItem as Departament);
+                MessageBox.Show(result);
+            }
+            else
+            {
+
+            }
+        }
+        private void Delete_Seller_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить выбранный обьект?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                string result = SellerService.DeleteSeller(DgSellers.SelectedItem as Seller);
+                MessageBox.Show(result);
+            }
+            else
+            {
+
+            }
+        }
+        private void Delete_Equipment_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите удалить выбранный обьект?", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                string result = EquipmentService.DeleteEquipment(DgEquipment.SelectedItem as Equipment);
+                MessageBox.Show(result);
+            }
+            else
+            {
+
+            }
+        }
         private void AddBrand_Click(object sender, RoutedEventArgs e)
         {
             Base.OpenCenterPosAndOpen(new AddBrand());
@@ -114,7 +176,7 @@ namespace InventoryControl.Pages
 
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
@@ -146,7 +208,7 @@ namespace InventoryControl.Pages
 
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
@@ -178,7 +240,7 @@ namespace InventoryControl.Pages
 
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
@@ -210,7 +272,7 @@ namespace InventoryControl.Pages
 
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {
@@ -242,7 +304,7 @@ namespace InventoryControl.Pages
 
             saveFileDialog1.RestoreDirectory = true;
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if ((myStream = saveFileDialog1.OpenFile()) != null)
                 {

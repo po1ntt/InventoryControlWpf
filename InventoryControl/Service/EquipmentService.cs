@@ -49,5 +49,45 @@ namespace InventoryControl.Service
             }
             return result;
         }
+        public static string EditEquipment(Equipment oldequipment, Brand brand, TypeOfEquipment type, string name)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var departament = context.Equipment.FirstOrDefault(p => p.id_equip == oldequipment.id_equip);
+                if (departament != null)
+                {
+                    departament.name = name;
+                    departament.id_brand = brand.id_brand;
+                    departament.typeofequipment_id = type.id_typeEquip;
+                    context.SaveChanges();
+                    result = "Техника успешно изменена";
+                }
+                else
+                {
+                    result = "Передан null;(";
+                }
+            }
+            return result;
+        }
+        public static string DeleteEquipment(Equipment type)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var brandtodelete = context.Equipment.FirstOrDefault(p => p.typeofequipment_id == type.id_equip);
+                if (brandtodelete != null)
+                {
+                    context.Equipment.Remove(brandtodelete);
+                    context.SaveChanges();
+                    result = "Техника с названием " + type.name + " успешно удален";
+                }
+                else
+                {
+                    result = "Господи опять null";
+                }
+            }
+            return result;
+        }
     }
 }

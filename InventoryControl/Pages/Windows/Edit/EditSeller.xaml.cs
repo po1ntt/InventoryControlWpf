@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryControl.BdWork;
+using InventoryControl.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,19 @@ namespace InventoryControl.Pages.Windows.Edit
     /// </summary>
     public partial class EditSeller : Window
     {
-        public EditSeller()
+        public Seller seller1;
+        public EditSeller(Seller seller)
         {
             InitializeComponent();
+            txbSeller.Text = seller.nameSeller;
+            seller1 = seller;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string result = SellerService.EditSeller(seller1, txbSeller.Text);
+            MessageBox.Show(result);
         }
     }
 }

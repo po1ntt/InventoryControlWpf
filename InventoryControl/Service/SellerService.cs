@@ -48,6 +48,44 @@ namespace InventoryControl.Service
             }
             return result;
         }
+        public static string EditSeller(Seller seller1, string seller)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var departament = context.Seller.FirstOrDefault(p => p.id_seller == seller1.id_seller);
+                if (departament != null)
+                {
+                    departament.nameSeller = seller;
+                    context.SaveChanges();
+                    result = "Продавец успешно изменен";
+                }
+                else
+                {
+                    result = "Передан null;(";
+                }
+            }
+            return result;
+        }
+        public static string DeleteSeller(Seller type)
+        {
+            string result = "Ошибка";
+            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            {
+                var brandtodelete = context.Seller.FirstOrDefault(p => p.id_seller == type.id_seller);
+                if (brandtodelete != null)
+                {
+                    context.Seller.Remove(brandtodelete);
+                    context.SaveChanges();
+                    result = "Техника с названием " + type.nameSeller + " успешно удален";
+                }
+                else
+                {
+                    result = "Господи опять null";
+                }
+            }
+            return result;
+        }
 
     }
 }

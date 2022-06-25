@@ -1,4 +1,6 @@
-﻿using System;
+﻿using InventoryControl.BdWork;
+using InventoryControl.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +21,18 @@ namespace InventoryControl.Pages.Windows.Edit
     /// </summary>
     public partial class EditDepartament : Window
     {
-        public EditDepartament()
+        public Departament departament1;
+        public EditDepartament(Departament departament)
         {
             InitializeComponent();
+            departament1 = departament;
+            txbDepartament.Text = departament1.name_departament;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            string result = DepartamentService.EditDepartament(departament1, txbDepartament.Text);
+            MessageBox.Show(result);
         }
     }
 }
