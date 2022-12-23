@@ -10,10 +10,15 @@
 namespace InventoryControl.BdWork
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class Logger
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id_log { get; set; }
+        public string UserLogin { get; set; }
+        public string Operation { get; set; }
+        public string ChangeData { get; set; }
+        public string NameData { get; set; }
+        public Nullable<System.DateTime> TimeChange { get; set; }
     }
 }

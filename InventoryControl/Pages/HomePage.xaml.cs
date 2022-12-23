@@ -24,7 +24,7 @@ using Microsoft.Win32;
 using System.Windows.Forms;
 using InventoryControl.Classes;
 using InventoryControl.Pages.Windows.Add;
-
+using MessageBox = System.Windows.MessageBox;
 
 namespace InventoryControl.Pages
 {
@@ -35,10 +35,12 @@ namespace InventoryControl.Pages
     {
         public HomePage()
         {
+            this.DataContext = Service.UserService.userToSave;
             InitializeComponent();
             bradncombo.ItemsSource = BrandService.GetBrandInfo();
             typeofequip.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();
             WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
+            
         }
 
         private void PropertiesClick(object sender, RoutedEventArgs e)
@@ -160,6 +162,24 @@ namespace InventoryControl.Pages
             WareHouseEquipDG.ItemsSource = null;
             WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(UserService.userToSave.Role == "Admin")
+            {
+                Classes.Frame.FrameOBJ.Navigate(new LoggerPage());
+            }
+            else
+            {
+                MessageBox.Show("Доступ к логам есть только у администратора");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Service.UserService.userToSave = null;
+            Classes.Frame.FrameOBJ.Navigate(new AuthorizePage());
         }
     }
 }

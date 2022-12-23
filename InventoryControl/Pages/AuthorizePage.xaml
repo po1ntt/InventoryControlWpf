@@ -1,0 +1,24 @@
+﻿<Page x:Class="InventoryControl.Pages.AuthorizePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryControl.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthorizePage">
+
+    <Grid Background="White">
+        <Border BorderBrush="Purple" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" CornerRadius="30">
+            <StackPanel MinWidth="400" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Width="350" Height="300" Source="../images/warehouseLogo.png"></Image>
+
+                <TextBlock Text="Логин:" FontSize="20" FontWeight="DemiBold"></TextBlock>
+                <TextBox x:Name="txbLogin"  FontSize="20" FontWeight="DemiBold" ></TextBox>
+                <TextBlock Text="Пароль:" FontWeight="DemiBold" FontSize="20"></TextBlock>
+                <TextBox x:Name="txbPassword" Margin="0,0,0,10" FontSize="20" FontWeight="DemiBold"></TextBox>
+                <Button Content="Войти в аккаунт" Click="Button_Click"></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

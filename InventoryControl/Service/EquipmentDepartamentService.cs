@@ -49,6 +49,8 @@ namespace InventoryControl.Service
                             count = count
                         });
                         result = "Запись успешно добавлена";
+                        Service.LoggerService.AddLog("Добавление оборудование в отдел", UserService.userToSave.Login, DateTime.Now, "Оборудование отдела", warehouseequip.Equipment.name);
+
                         warehouseequip.count = Convert.ToString(Convert.ToInt32(warehouseequip.count) - count);
                         context.SaveChanges();
                     }
@@ -59,6 +61,8 @@ namespace InventoryControl.Service
                             var depEquipment = context.DepartamentEquipment.Where(p => p.id_equipdep == id_equip).FirstOrDefault();
                             depEquipment.count = depEquipment.count + count;
                             warehouseequip.count = Convert.ToString(Convert.ToInt32(warehouseequip.count) - count);
+                            Service.LoggerService.AddLog("Добавление оборудование в отдел", UserService.userToSave.Login, DateTime.Now, "Оборудование отдела", depEquip.Equipment.name);
+
                             context.SaveChanges();
                             result = "Обновлено количество техники";
                         }

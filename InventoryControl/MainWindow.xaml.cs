@@ -25,7 +25,7 @@ namespace InventoryControl
         {
             InitializeComponent();
             Classes.Frame.FrameOBJ = MainFrame;
-            Classes.Frame.FrameOBJ.Navigate(new HomePage());
+            Classes.Frame.FrameOBJ.Navigate(new AuthorizePage());
         }
     }
 }

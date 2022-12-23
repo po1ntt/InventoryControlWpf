@@ -1,4 +1,5 @@
 ﻿using InventoryControl.BdWork;
+using InventoryControl.Pages.Windows.Add;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -36,6 +37,8 @@ namespace InventoryControl.Service
                         name_departament = namedep
                         
                     });
+                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Отдел", namedep);
+
                     result = "Новый департамент успешно добавлен";
                     context.SaveChanges();
                 }
@@ -56,6 +59,8 @@ namespace InventoryControl.Service
                 if (departament != null)
                 {
                     departament.name_departament = namedep;
+                    Service.LoggerService.AddLog("Редактирование", UserService.userToSave.Login, DateTime.Now, "Отдел", olddepartament.name_departament);
+
                     context.SaveChanges();
                     result = "Департамент успешно изменен";
                 }
@@ -75,6 +80,8 @@ namespace InventoryControl.Service
                 if(departament != null)
                 {
                     context.Departament.Remove(departamenttodelete);
+                    Service.LoggerService.AddLog("Удаление", UserService.userToSave.Login, DateTime.Now, "Отдел", departament.name_departament);
+
                     context.SaveChanges();
                     result = "Департамент успешно удален";
                 }

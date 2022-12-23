@@ -1,4 +1,5 @@
 ﻿using InventoryControl.BdWork;
+using InventoryControl.Pages.Windows.Add;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -40,6 +41,8 @@ namespace InventoryControl.Service
                        
                     });
                     result = "Новая техника успешно добавлена";
+                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Техника", nameequip);
+
                     context.SaveChanges();
                 }
                 else
@@ -60,6 +63,8 @@ namespace InventoryControl.Service
                     departament.name = name;
                     departament.id_brand = brand.id_brand;
                     departament.typeofequipment_id = type.id_typeEquip;
+                    Service.LoggerService.AddLog("Редактирование", UserService.userToSave.Login, DateTime.Now, "Техника", oldequipment.name);
+
                     context.SaveChanges();
                     result = "Техника успешно изменена";
                 }
@@ -79,6 +84,8 @@ namespace InventoryControl.Service
                 if (brandtodelete != null)
                 {
                     context.Equipment.Remove(brandtodelete);
+                    Service.LoggerService.AddLog("Удаление", UserService.userToSave.Login, DateTime.Now, "Техника", type.name);
+
                     context.SaveChanges();
                     result = "Техника с названием " + type.name + " успешно удален";
                 }

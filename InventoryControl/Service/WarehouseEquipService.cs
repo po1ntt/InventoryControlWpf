@@ -67,6 +67,11 @@ namespace InventoryControl.Service
                         count = count.ToString()
                     });
                     result = "Запись успешно добавлена";
+                    Equipment equipment = context.Equipment.FirstOrDefault(p=> p.id_equip == id_equip);
+                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Склад", equipment.name);
+
+                    context.SaveChanges();
+
                 }
                 else
                 {
@@ -74,6 +79,7 @@ namespace InventoryControl.Service
                     {
                         var equipmentWareHouse = context.WarehouseEquipment.Where(p => p.id_equipment == id_equip).FirstOrDefault();
                         equipmentWareHouse.count = Convert.ToString(Convert.ToInt32(equipmentWareHouse.count) + count);
+                        Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Склад", equipmentWareHouse.Equipment.name);
                         context.SaveChanges();
                         result = "Обновлено количество техники";
                     }

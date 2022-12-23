@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3f52ab970c0847688ae0cc0f223f1dbd" Name="Diagram1">
+      <Diagram DiagramId="da0fbacf0bc7496aae2fe3d0009bba9c" Name="Diagram1">
         <EntityTypeShape EntityType="InventoryСontrolModel.Brand" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.Departament" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.DepartamentEquipment" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.Equipment" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryСontrolModel.Logger" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.Orders" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.Seller" Width="1.5" PointX="6" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.Status" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="InventoryСontrolModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryСontrolModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.TypeOfEquipment" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventoryСontrolModel.Users" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InventoryСontrolModel.WarehouseEquipment" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
         <AssociationConnector Association="InventoryСontrolModel.FK_Equipment_Brand" ManuallyRouted="false" />
         <AssociationConnector Association="InventoryСontrolModel.FK_DepartamentEquipment_Departament" ManuallyRouted="false" />

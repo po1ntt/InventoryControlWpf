@@ -42,6 +42,8 @@ namespace InventoryControl.Service
                         nameSeller = namesellerr
 
                     });
+                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Поставщик", namesellerr);
+
                     result = "Новый поставщик успешно добавлен";
                     context.SaveChanges();
                 }
@@ -57,6 +59,8 @@ namespace InventoryControl.Service
                 if (departament != null)
                 {
                     departament.nameSeller = seller;
+                    Service.LoggerService.AddLog("Редактирование", UserService.userToSave.Login, DateTime.Now, "Поставщик", seller1.nameSeller);
+
                     context.SaveChanges();
                     result = "Продавец успешно изменен";
                 }
@@ -76,6 +80,8 @@ namespace InventoryControl.Service
                 if (brandtodelete != null)
                 {
                     context.Seller.Remove(brandtodelete);
+                    Service.LoggerService.AddLog("Удаление", UserService.userToSave.Login, DateTime.Now, "Поставщик", type.nameSeller);
+
                     context.SaveChanges();
                     result = "Техника с названием " + type.nameSeller + " успешно удален";
                 }
