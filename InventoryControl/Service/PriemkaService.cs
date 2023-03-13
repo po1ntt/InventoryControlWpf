@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace InventoryControl.Service
 {
-    class StatusService
+    public class PriemkaService
     {
-        public static ObservableCollection<Status> GetStatusInfo()
+        public static ObservableCollection<ActPriemka> GetPriemkaInfo()
         {
             InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
-            var Collection = new ObservableCollection<Status>();
-            var items = context.Status.ToList();
+            var Collection = new ObservableCollection<ActPriemka>();
+            var items = context.ActPriemka.ToList();
             foreach (var item in items)
             {
 

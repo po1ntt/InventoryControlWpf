@@ -4,107 +4,105 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InventoryControl.Pages"
+      xmlns:MyControl="clr-namespace:InventoryControl.Control"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1200"
       Title="HomePage"
       Background="White"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      >
-
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="63*"/>
-            <RowDefinition Height="937*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="133*"/>
-            <ColumnDefinition Width="467*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Width="896">
-            <Button MinWidth="200" Content="Управление свойствами" Click="PropertiesClick" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-            <Button MinWidth="200" Content="Заказы" Click="OrdersClick" Margin="0 0 20 0"  Foreground="Black"  Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-            <Button MinWidth="200" Content="Добавление новой техники" Click="WarehouseAdd_Click"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-            <Button MinWidth="200" Content="Департаменты" Click="DepartamentClick" Margin="0 0 20 0"  Foreground="Black"  Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
-            <Grid >
-                <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
-                    <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
-                    <DataGrid.Columns>
-
-                        <DataGridTextColumn Header="Название" Width="250" Binding="{Binding Equipment.name}">
-
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Тип техники" Width="*" Binding="{Binding Equipment.TypeOfEquipment.NameTypeEquip}">
 
 
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Header="Бренд" Width="*" Binding="{Binding Equipment.Brand.namebrand}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="937*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="133*"/>
+                <ColumnDefinition Width="467*"/>
+            </Grid.ColumnDefinitions>
+           
+
+            <ScrollViewer Grid.RowSpan="2" Grid.Column="2">
+                <Grid >
+                    <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Обновить" Click="MenuItem_Click"></MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Название" Width="250" Binding="{Binding Equipment.name}">
+
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Тип техники" Width="*" Binding="{Binding Equipment.TypeOfEquipment.NameTypeEquip}">
 
 
-                        </DataGridTextColumn>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Бренд" Width="*" Binding="{Binding Equipment.Brand.namebrand}">
 
-                        <materialDesign:DataGridTextColumn Header="Количество" Width="*" Binding="{Binding count}">
+
+                            </DataGridTextColumn>
+
+                            <materialDesign:DataGridTextColumn Header="Количество" Width="*" Binding="{Binding count}">
 
 
-                        </materialDesign:DataGridTextColumn>
+                            </materialDesign:DataGridTextColumn>
 
-                        <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Click="AddDepartamentEquipment" Foreground="Black" Height="50" Content="Отправить в департамент"  Background="Transparent">
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="AddDepartamentEquipment" Foreground="Black" Height="50" Content="Отправить в департамент"  Background="Transparent">
+                        
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </ScrollViewer>
 
-                                    </Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-        </ScrollViewer>
-
-        <StackPanel  Grid.Row="0" Margin="10,20,10,20" Grid.RowSpan="2">
-            <TextBlock Text="Фильтры:" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
-            <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
-            <TextBox x:Name="namefilter" Height="50" Margin="0 0 0 20" TextChanged="NameFilter">
-
-            </TextBox >
-            <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
-            <StackPanel Orientation="Horizontal">
-                <TextBox x:Name="countfilter" Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
+            <StackPanel Grid.Column="1"  Grid.Row="0" Margin="10,20,10,20" Grid.RowSpan="2">
+                <TextBlock Text="Фильтры:" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
+                <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
+                <TextBox x:Name="namefilter" Height="50" Margin="0 0 0 20" TextChanged="NameFilter">
 
                 </TextBox >
-                <ComboBox  Width="30" Height="30">
+                <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="countfilter" Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
 
-                </ComboBox>
-            </StackPanel>
+                    </TextBox >
+                    <ComboBox  Width="30" Height="30">
 
-            <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
-            <ComboBox SelectionChanged="bradncombo_SelectionChanged" DisplayMemberPath="namebrand" AllowDrop="True"  FontSize="30" x:Name="bradncombo" Height="50"  Margin="0 0 0 20">
-
-            </ComboBox>
-
-            <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
-            <ComboBox SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" FontSize="30" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
-
-            </ComboBox>
-            <Button Background="Green" BorderBrush="Green" Margin="0,0,0,20" Click="Excel_Click">Экспорт Excel</Button>
-            <Button Background="Blue" BorderBrush="Green" Margin="0,0,0,20"  Click="DelFilters_Click">Убрать фильтры</Button>
-            <Button Background="Purple" Click="Button_Click"  Margin="0,0,0,100"  BorderBrush="AliceBlue" >Перейти к логам</Button>
-            <Grid Grid.Row="0" VerticalAlignment="Bottom">
-
-                <StackPanel  VerticalAlignment="Bottom">
-                    <TextBlock Text="{Binding Role,StringFormat='Роль: {0}' }" FontSize="20" FontWeight="DemiBold" TextAlignment="Center"></TextBlock>
-                    <TextBlock Text="{Binding Login, StringFormat='Логин: {0}'}" Margin="0,0,0,30" FontSize="20" FontWeight="DemiBold" TextAlignment="Center"></TextBlock>
-                    <Button Content="Выйти из аккаунта" Click="Button_Click_1"></Button>
+                    </ComboBox>
                 </StackPanel>
 
-            </Grid>
-        </StackPanel>
-       
+                <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
+                <ComboBox SelectionChanged="bradncombo_SelectionChanged" DisplayMemberPath="namebrand" AllowDrop="True"  FontSize="30" x:Name="bradncombo" Height="50"  Margin="0 0 0 20">
+
+                </ComboBox>
+
+                <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
+                <ComboBox SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" FontSize="30" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
+
+                </ComboBox>
+                <Button Background="Green" BorderBrush="Green" Margin="0,0,0,20" Click="Excel_Click">Экспорт Excel</Button>
+                <Button Background="Blue" BorderBrush="Green" Margin="0,0,0,20"  Click="DelFilters_Click">Убрать фильтры</Button>
+                <Grid Grid.Row="0" VerticalAlignment="Bottom">
+
+                   
+
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
+        <MyControl:NavMenu></MyControl:NavMenu>
+
     </Grid>
 </Page>

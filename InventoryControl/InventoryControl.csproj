@@ -75,7 +75,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BdWork\ActPriemka.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="BdWork\Brand.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\Currency.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Departament.cs">
@@ -85,6 +91,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Equipment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\Insurance_id.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\ItemsNakladnay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Logger.cs">
@@ -105,10 +117,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BdWork\Nakladnay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="BdWork\Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BdWork\PlacePriemka.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="BdWork\Seller.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\ShetFactura.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\Shipper.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BdWork\sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Status.cs">
@@ -128,6 +158,9 @@
     </Compile>
     <Compile Include="Classes\Base.cs" />
     <Compile Include="Classes\Filters.cs" />
+    <Compile Include="Control\NavMenu.xaml.cs">
+      <DependentUpon>NavMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AboutEquipPage.xaml.cs">
       <DependentUpon>AboutEquipPage.xaml</DependentUpon>
     </Compile>
@@ -136,6 +169,9 @@
     </Compile>
     <Compile Include="Pages\DepartamentPage.xaml.cs">
       <DependentUpon>DepartamentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Documents.xaml.cs">
+      <DependentUpon>Documents.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoggerPage.xaml.cs">
       <DependentUpon>LoggerPage.xaml</DependentUpon>
@@ -173,6 +209,15 @@
     <Compile Include="Pages\Windows\Add\NewOrder.xaml.cs">
       <DependentUpon>NewOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Windows\Documents\ChetFacturaWindow.xaml.cs">
+      <DependentUpon>ChetFacturaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Windows\Documents\NakladnayWindow.xaml.cs">
+      <DependentUpon>NakladnayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Windows\Documents\PriemkaWindow.xaml.cs">
+      <DependentUpon>PriemkaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Windows\Edit\EditBrand.xaml.cs">
       <DependentUpon>EditBrand.xaml</DependentUpon>
     </Compile>
@@ -196,12 +241,19 @@
     <Compile Include="Service\EquipmentDepartamentService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\LoggerService.cs" />
+    <Compile Include="Service\NakladnayService.cs" />
     <Compile Include="Service\OrdersService.cs" />
+    <Compile Include="Service\PriemkaService.cs" />
     <Compile Include="Service\SellerService.cs" />
+    <Compile Include="Service\ShetFacturaService.cs" />
     <Compile Include="Service\StatusService.cs" />
     <Compile Include="Service\TypeEquipmentService.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\WarehouseEquipService.cs" />
+    <Page Include="Control\NavMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,6 +276,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DepartamentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Documents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +332,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Windows\Add\NewOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\Documents\ChetFacturaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\Documents\NakladnayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\Documents\PriemkaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -382,6 +450,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\warehouseLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="BdWork\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -392,7 +463,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="images\warehouseLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

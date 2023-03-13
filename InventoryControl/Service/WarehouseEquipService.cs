@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<WarehouseEquipment> GetWareHouseEquipment()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<WarehouseEquipment>();
             var items = context.WarehouseEquipment.ToList();
             foreach(var item in items)
@@ -28,7 +28,7 @@ namespace InventoryControl.Service
         }
         public static ObservableCollection<WarehouseEquipment> GetWareHouseEquipmentNameFilter(string name)
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<WarehouseEquipment>();
             var items = context.WarehouseEquipment.ToList().Where(p => p.Equipment.name.Contains(name));
             foreach (var item in items)
@@ -45,7 +45,7 @@ namespace InventoryControl.Service
         public static string AddNewEquipmentToWarehouse(int id_equip, int count)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 bool isExist = false;
                 var warehouseEquip = context.WarehouseEquipment.ToList();

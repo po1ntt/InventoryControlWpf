@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<TypeOfEquipment> GetTypeOfEquipmentInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<TypeOfEquipment>();
             var items = context.TypeOfEquipment.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         {
             string result = "Ошибка";
 
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var type = context.TypeOfEquipment.FirstOrDefault(p => p.NameTypeEquip == typeEquip);
                 if (type!=null)
@@ -53,7 +53,7 @@ namespace InventoryControl.Service
         public static string EditTypeOf(TypeOfEquipment typeOfEquipment, string nametype)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departament = context.TypeOfEquipment.FirstOrDefault(p => p.id_typeEquip == typeOfEquipment.id_typeEquip);
                 if (departament != null)
@@ -74,7 +74,7 @@ namespace InventoryControl.Service
         public static string DeleteType(TypeOfEquipment type)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brandtodelete = context.TypeOfEquipment.FirstOrDefault(p => p.id_typeEquip == type.id_typeEquip);
                 if (brandtodelete != null)

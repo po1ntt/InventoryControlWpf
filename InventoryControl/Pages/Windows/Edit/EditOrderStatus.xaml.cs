@@ -31,7 +31,7 @@ namespace InventoryControl.Pages.Windows.Edit
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            InventoryСontrolEntities entities = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 entities = new InventoryСontrolEntities1();
             var orders = entities.Orders.Where(p => p.id_orders == orders1.id_orders).FirstOrDefault();
             var status = txbBrand.SelectedItem as Status;
             if(status.status1 == "Ожидается доставка")

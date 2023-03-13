@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Logger> GetLogInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Logger>();
             var items = context.Logger.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         {
             string result = "Ошибка";
 
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
              
                     context.Logger.Add(new Logger

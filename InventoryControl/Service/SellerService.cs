@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Seller> GetSellerInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Seller>();
             var items = context.Seller.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         {
             string result = "Ошибка";
 
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brand = context.Seller.FirstOrDefault(p => p.nameSeller == namesellerr);
                 if (brand != null)
@@ -53,7 +53,7 @@ namespace InventoryControl.Service
         public static string EditSeller(Seller seller1, string seller)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departament = context.Seller.FirstOrDefault(p => p.id_seller == seller1.id_seller);
                 if (departament != null)
@@ -74,7 +74,7 @@ namespace InventoryControl.Service
         public static string DeleteSeller(Seller type)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brandtodelete = context.Seller.FirstOrDefault(p => p.id_seller == type.id_seller);
                 if (brandtodelete != null)

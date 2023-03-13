@@ -13,7 +13,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Departament> GetDepartamentInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Departament>();
             var items = context.Departament.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         public static string AddDepartament(string namedep)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departament = context.Departament.FirstOrDefault(p => p.name_departament == namedep);
                 if(departament == null)
@@ -53,7 +53,7 @@ namespace InventoryControl.Service
         public static string EditDepartament(Departament olddepartament, string namedep)
         {
             string result = "Ошибка";
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departament = context.Departament.FirstOrDefault(p => p.id_departament == olddepartament.id_departament);
                 if (departament != null)
@@ -74,7 +74,7 @@ namespace InventoryControl.Service
         public static string DeleteDepartament(Departament departament)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departamenttodelete = context.Departament.FirstOrDefault(p => p.id_departament == departament.id_departament);
                 if(departament != null)

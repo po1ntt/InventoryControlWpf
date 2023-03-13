@@ -38,7 +38,7 @@ namespace InventoryControl.Pages.Windows.Add
 
         private void EquipmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var equip = EquipmentCombo.SelectedItem as Equipment;
             var warehouseequip = context.WarehouseEquipment.FirstOrDefault(p => p.Equipment.id_equip == equip.id_equip) as WarehouseEquipment;
             nameteh.Text = warehouseequip.Equipment.name;

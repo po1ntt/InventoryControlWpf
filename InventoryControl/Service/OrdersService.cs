@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Orders> GetOrdersInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Orders>();
             var items = context.Orders.ToList();
             foreach (var item in items)
@@ -25,7 +25,7 @@ namespace InventoryControl.Service
         public static string addOrder(int count, int id_equip, int seller_id, int price)
         {
             string result = "Ошибка";
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 context.Orders.Add(new Orders
                 {

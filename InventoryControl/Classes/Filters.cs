@@ -12,7 +12,7 @@ namespace InventoryControl.Classes
     {
         public static ObservableCollection<WarehouseEquipment> FiltersWareHouse(string name, Brand brand, TypeOfEquipment type, string count)
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<WarehouseEquipment>();
             var items = new List<WarehouseEquipment>();
             if (name != null || brand != null || type != null || count != null)

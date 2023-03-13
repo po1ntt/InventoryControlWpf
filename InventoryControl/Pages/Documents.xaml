@@ -1,0 +1,161 @@
+﻿<Page x:Class="InventoryControl.Pages.Documents"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryControl.Pages" xmlns:materialDesign="http://schemas.microsoft.com/netfx/2009/xaml/presentation" xmlns:materialDesign1="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Documents">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="367*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Foreground="Black">Выбор документов</TextBlock>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <StackPanel>
+                <Border  PreviewMouseLeftButtonDown="nakladnay_PreviewMouseLeftButtonDown" x:Name="nakladnay"  BorderBrush="Purple" Background="Purple" CornerRadius="5" BorderThickness="2" Margin="5,5,5,0" Height="50">
+                    <TextBlock x:Name="Nakladay_text" Foreground="White" Text="Накладные" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                </Border>
+                <Border PreviewMouseLeftButtonDown="priemka_PreviewMouseLeftButtonDown" x:Name="priemka" Background="White" BorderBrush="Blue" CornerRadius="5" BorderThickness="2" Margin="5,5,5,0" Height="50">
+                    <TextBlock x:Name="priemka_text" Text="Приемка" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                </Border>
+                <Border PreviewMouseLeftButtonDown="chet_factura_PreviewMouseLeftButtonDown" x:Name="chet_factura" Background="White" BorderBrush="Blue" CornerRadius="5" BorderThickness="2" Margin="5,5,5,0" Height="50">
+                    <TextBlock x:Name="chet_factura_text" Text="Счет фактура" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                </Border>
+                <Button  Click="Back_Click" Margin="5,5,5,0" Content="Обратно"></Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <DataGrid x:Name="Nakladnay_data" Visibility="Visible" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Обновить" ></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="id" Width="50" Binding="{Binding id_nakladnay}">
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Номер" Width="*" Binding="{Binding NumberNakladnay}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата создание" Width="*" Binding="{Binding DateCreated, StringFormat=dd.MM.yyyy}">
+
+
+                    </DataGridTextColumn>
+
+                    <materialDesign:DataGridTextColumn Header="Количество предметов" Width="*" Binding="{Binding ItemsNakladnay.Count}">
+
+
+                    </materialDesign:DataGridTextColumn>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Nakladnay_Click" Foreground="Black" Height="50" Background="Transparent">
+                                    <materialDesign1:PackIcon Kind="Eye" Width="25" Height="25" VerticalAlignment="Center" Margin="5"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="Priemka_data" Visibility="Collapsed" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Обновить" ></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="id" Width="50" Binding="{Binding id_priemka}">
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Номер" Width="*" Binding="{Binding NumberPriemka}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Место приемки" Width="*" Binding="{Binding PlacePriemka.NamePlace}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Страховая" Width="*" Binding="{Binding Insurance_id1.NameInsurance}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Грузоперевозчик" Width="*" Binding="{Binding Shipper.NameShipper}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата создания" Width="*" Binding="{Binding PriemkaCreatedDate , StringFormat=dd.MM.yyyy}">
+
+
+                    </DataGridTextColumn>
+
+                    <materialDesign:DataGridTextColumn Header="Количество предметов" Width="*" Binding="{Binding count}">
+
+
+                    </materialDesign:DataGridTextColumn>
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Priemka_Click" Foreground="Black" Height="50" Background="Transparent">
+                                    <materialDesign1:PackIcon Kind="Eye" Width="25" Height="25" VerticalAlignment="Center" Margin="5"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="ShetFactura_data" Visibility="Collapsed" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Обновить" ></MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="id" Width="50" Binding="{Binding id_shetFactura}">
+
+                    </DataGridTextColumn>
+                    
+                    <DataGridTextColumn Header="Поставщик" Width="*" Binding="{Binding Seller.nameSeller}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Валюта" Width="*" Binding="{Binding Currency.NameCurrency}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Номер накладной" Width="*" Binding="{Binding Nakladnay.NumberNakladnay}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата создания" Width="*" Binding="{Binding Nakladnay.DateCreated, StringFormat=dd.MM.yyyy}">
+
+
+                    </DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="ShetFactura_Click" Foreground="Black" Height="50" Background="Transparent">
+                                    <materialDesign1:PackIcon Kind="Eye" Width="25" Height="25" VerticalAlignment="Center" Margin="5"/>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Page>

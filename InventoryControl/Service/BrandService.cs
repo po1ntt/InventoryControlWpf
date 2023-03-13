@@ -12,7 +12,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Brand> GetBrandInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Brand>();
             var items = context.Brand.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         {
             string result = "Ошибка";
             
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brand = context.Brand.FirstOrDefault(p => p.namebrand == namebrand);
                  if(brand != null)
@@ -52,7 +52,7 @@ namespace InventoryControl.Service
         public static string EditBrand(Brand oldbrand, string namebrand)
         {
             string result = "Ошибка";
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brand = context.Brand.FirstOrDefault(p => p.id_brand == oldbrand.id_brand);
                 if(brand != null)
@@ -73,7 +73,7 @@ namespace InventoryControl.Service
         public static string DeleteBrand(Brand brand)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var brandtodelete = context.Brand.FirstOrDefault(p => p.id_brand == brand.id_brand);
                 if(brandtodelete != null)

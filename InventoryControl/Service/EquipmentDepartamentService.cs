@@ -13,7 +13,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<DepartamentEquipment> GetEquipmentDepartamentInfo(string namedep)
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<DepartamentEquipment>();
             var items = context.DepartamentEquipment.ToList().Where(p => p.Departament.name_departament == namedep);
             foreach (var item in items)
@@ -27,7 +27,7 @@ namespace InventoryControl.Service
         {
             string result = "Ошибка";
             
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
 
                 var depEquip = context.DepartamentEquipment.FirstOrDefault(p => p.id_equipdep == id_equip && p.Departament.id_departament == id_dep);

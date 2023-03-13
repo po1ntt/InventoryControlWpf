@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace InventoryControl.Service
 {
-    class StatusService
+    public class ShetFacturaService
     {
-        public static ObservableCollection<Status> GetStatusInfo()
+        public static ObservableCollection<ShetFactura> GetShetFacturaInfo()
         {
             InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
-            var Collection = new ObservableCollection<Status>();
-            var items = context.Status.ToList();
+            var Collection = new ObservableCollection<ShetFactura>();
+            var items = context.ShetFactura.ToList();
             foreach (var item in items)
             {
 

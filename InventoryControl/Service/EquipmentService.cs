@@ -13,7 +13,7 @@ namespace InventoryControl.Service
     {
         public static ObservableCollection<Equipment> GetEquipmentInfo()
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var Collection = new ObservableCollection<Equipment>();
             var items = context.Equipment.ToList();
             foreach (var item in items)
@@ -26,7 +26,7 @@ namespace InventoryControl.Service
         public static string addEquipment(string nameequip, int id_typeequip, int brand)
         {
             string result = "Ошибка";
-            using(InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using(InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var equip = context.Equipment.FirstOrDefault(p => p.name == nameequip);
                 if(equip == null)
@@ -55,7 +55,7 @@ namespace InventoryControl.Service
         public static string EditEquipment(Equipment oldequipment, Brand brand, TypeOfEquipment type, string name)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
             {
                 var departament = context.Equipment.FirstOrDefault(p => p.id_equip == oldequipment.id_equip);
                 if (departament != null)
@@ -78,8 +78,8 @@ namespace InventoryControl.Service
         public static string DeleteEquipment(Equipment type)
         {
             string result = "Ошибка";
-            using (InventoryСontrolEntities context = new InventoryСontrolEntities())
-            {
+            using (InventoryСontrolEntities1 context = new InventoryСontrolEntities1())
+            {   
                 var brandtodelete = context.Equipment.FirstOrDefault(p => p.typeofequipment_id == type.id_equip);
                 if (brandtodelete != null)
                 {

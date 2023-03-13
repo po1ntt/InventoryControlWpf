@@ -12,23 +12,21 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class Seller
+    public partial class PlacePriemka
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Seller()
+        public PlacePriemka()
         {
             this.ActPriemka = new HashSet<ActPriemka>();
-            this.Orders = new HashSet<Orders>();
             this.ShetFactura = new HashSet<ShetFactura>();
         }
     
-        public int id_seller { get; set; }
-        public string nameSeller { get; set; }
+        public int id_place { get; set; }
+        public string NamePlace { get; set; }
+        public string Adress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ActPriemka> ActPriemka { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShetFactura> ShetFactura { get; set; }
     }

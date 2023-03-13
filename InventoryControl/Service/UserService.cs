@@ -12,7 +12,7 @@ namespace InventoryControl.Service
         public static Users userToSave;
         public static bool LoginUser(string Login, string Passoword)
         {
-            InventoryСontrolEntities context = new InventoryСontrolEntities();
+            InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             var user = context.Users.FirstOrDefault(p => p.Login == Login && p.Password == Passoword);
             if(user != null)
             {

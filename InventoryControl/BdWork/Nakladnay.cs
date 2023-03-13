@@ -12,31 +12,23 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class Equipment
+    public partial class Nakladnay
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Equipment()
+        public Nakladnay()
         {
-            this.DepartamentEquipment = new HashSet<DepartamentEquipment>();
             this.ItemsNakladnay = new HashSet<ItemsNakladnay>();
-            this.Orders = new HashSet<Orders>();
-            this.WarehouseEquipment = new HashSet<WarehouseEquipment>();
+            this.ShetFactura = new HashSet<ShetFactura>();
         }
     
-        public int id_equip { get; set; }
-        public string name { get; set; }
-        public Nullable<int> id_brand { get; set; }
-        public Nullable<int> typeofequipment_id { get; set; }
+        public int id_nakladnay { get; set; }
+        public string NumberNakladnay { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
+        public Nullable<int> id_itemNaklad { get; set; }
     
-        public virtual Brand Brand { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DepartamentEquipment> DepartamentEquipment { get; set; }
-        public virtual TypeOfEquipment TypeOfEquipment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemsNakladnay> ItemsNakladnay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WarehouseEquipment> WarehouseEquipment { get; set; }
+        public virtual ICollection<ShetFactura> ShetFactura { get; set; }
     }
 }
