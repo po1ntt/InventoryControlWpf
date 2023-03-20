@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="AddToWareHouseEquip" Height="600" Width="400"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-    <Grid>
+    <Grid Style="{StaticResource  BackgroundGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48*"/>
             <RowDefinition Height="438*"/>
             <RowDefinition Height="83*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Добавление техники на склад" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
+        <TextBlock Text="Добавление техники на склад"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="23px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
-            <ComboBox x:Name="EquipmentCombo" DisplayMemberPath="name" Grid.Row="1" materialDesign:HintAssist.Hint="Выберите технику" FontSize="20px"></ComboBox>
+            <ComboBox Margin="5,0,5,10" x:Name="EquipmentCombo" DisplayMemberPath="name" Grid.Row="1" materialDesign:HintAssist.Hint="Выберите технику" FontSize="20px"></ComboBox>
             <TextBox x:Name="txbCount" Grid.Row="1" materialDesign:HintAssist.Hint="Кол-во техники" FontSize="20px"></TextBox>
         </StackPanel>
 

@@ -7,11 +7,19 @@
       mc:Ignorable="d" 
        d:DesignHeight="1000" d:DesignWidth="1200"
       Title="HomePage"
-      Background="White"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:control="clr-namespace:InventoryControl.Control">
+    <Page.Background>
+        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+            <GradientStop Color="#060531" Offset="0"></GradientStop>
+            <GradientStop Color="#1b1488"  Offset="0.75"></GradientStop>
+        </LinearGradientBrush>
+    </Page.Background>
 
-    <Grid>
+    <Grid Style="{StaticResource BackgroundGrid}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="63*"/>
             <RowDefinition Height="937*"/>
         </Grid.RowDefinitions>
@@ -19,12 +27,13 @@
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3,0,41,0" Width="881">
+        <control:TitlePage Grid.Row="0" Grid.ColumnSpan="3"></control:TitlePage>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3,0,41,0" Width="881">
             <ComboBox x:Name="DepCombo" Margin="100 0 100 0"  SelectionChanged="DepCombo_SelectionChanged" DisplayMemberPath="name_departament" FontSize="30px" materialDesign:HintAssist.Hint="Департамент" Height="50" MaxWidth="400" MinWidth="300" HorizontalAlignment="Left"></ComboBox>
             <Button Content="Добавить технику со склада" Click="AddToDep_Click"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
 
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
             <Grid >
                 <DataGrid x:Name="DepartamentEquipDG" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.ContextMenu>
@@ -55,7 +64,7 @@
             </Grid>
         </ScrollViewer>
 
-        <StackPanel  Grid.Row="0" Margin="10 20" Grid.RowSpan="2">
+        <StackPanel  Grid.Row="1" Margin="10 20" Grid.RowSpan="2">
             <TextBlock Text="Фильтры:" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
             <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
             <TextBox Height="50" Margin="0 0 0 20" >
@@ -81,7 +90,6 @@
 
             </ComboBox>
             <Button Background="Green" Margin="0 0 0 30" BorderBrush="Green" Click="Excel_Click">Экспорт Excel</Button>
-            <Button Content="Назад" Click="Back_Click" HorizontalAlignment="Center" Width="200" Foreground="Black" Height="50"  BorderBrush="Blue" BorderThickness="2" Margin="0 0 20 0" Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
 
             <Grid Height="300">
 

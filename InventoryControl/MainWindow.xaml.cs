@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InventoryControl.Pages;
+using InventoryControl.Service;
 
 namespace InventoryControl
 {
@@ -25,7 +26,20 @@ namespace InventoryControl
         {
             InitializeComponent();
             Classes.Frame.FrameOBJ = MainFrame;
-            Classes.Frame.FrameOBJ.Navigate(new AuthorizePage());
+            if(Properties.Settings.Default.UserName != string.Empty)
+            {
+
+                UserService.UserName = Properties.Settings.Default.UserName;
+                UserService.UserPassword = Properties.Settings.Default.UserPassword;
+                UserService.UserRole = Properties.Settings.Default.UserRole;
+                Classes.Frame.FrameOBJ.Navigate(new HomePage());
+
+            }
+            else
+            {
+                Classes.Frame.FrameOBJ.Navigate(new AuthorizePage());
+
+            }
         }
     }
 }

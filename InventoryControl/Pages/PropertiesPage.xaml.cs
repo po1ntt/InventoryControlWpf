@@ -28,9 +28,12 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class PropertiesPage : Page
     {
+        public string TitlePage { get; set; }
         public PropertiesPage()
         {
             InitializeComponent();
+            TitlePage = "Свойства";
+            DataContext = this;
             DgBrand.Items.Clear();
             DgDepartament.Items.Clear();
             DgEquipment.Items.Clear();

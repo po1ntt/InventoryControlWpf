@@ -7,10 +7,77 @@
         <ResourceDictionary>
             <Style x:Key="MyTab" TargetType="TabItem" BasedOn="{StaticResource MaterialDesignTabItem}">
                 <Setter Property="Control.Background" Value="black"></Setter>
+              
             </Style>
+            <Style  TargetType="TextBlock" >
+                <Setter Property="Foreground" Value="White"></Setter>
+
+            </Style>
+            <Style  TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignFilledPasswordBox}" >
+                <Setter Property="Foreground" Value="White"></Setter>
+
+            </Style>
+            <Style  TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFilledTextBox}" >
+                <Setter Property="Foreground" Value="White"></Setter>
+
+            </Style>
+            <Style  TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignToolForegroundButton}" >
+            <Setter Property="Foreground" Value="White"></Setter>
+
+            </Style>
+            <Style  TargetType="TabControl" BasedOn="{StaticResource MaterialDesignFilledTabControl}" >
+                <Setter Property="Foreground" Value="White"></Setter>
+
+            </Style>
+            <Style  TargetType="TabItem" BasedOn="{StaticResource MaterialDesignHeaderedContentControl}" >
+                <Setter Property="Background" Value="Black"></Setter>
+
+            </Style>
+            <Style  TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}" >
+                <Setter Property="Foreground" Value="White"></Setter>
+               
+
+            </Style>
+            <Style  TargetType="ComboBoxItem" BasedOn="{StaticResource MaterialDesignCardsListBoxItem}" >
+                <Setter Property="Background" Value="Black"></Setter>
+                
+            </Style>
+            <Style  TargetType="Page" >
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#060531" Offset="0"></GradientStop>
+                            <GradientStop Color="#1b1488"  Offset="0.75"></GradientStop>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+            <Style  TargetType="Window" BasedOn="{StaticResource MaterialDesignWindow}" >
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                            <GradientStop Color="#060531" Offset="0"></GradientStop>
+                            <GradientStop Color="#1b1488"  Offset="0.75"></GradientStop>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+            </Style>
+            <Style  TargetType="Grid" x:Key="BackgroundGrid" >
+                <Setter Property="Background" Value="#060531"/>
+
+
+            </Style>
+            <Style TargetType="DataGrid" BasedOn="{StaticResource MaterialDesignDataGrid}">
+                <Setter Property="Background" Value="#060531"></Setter>
+
+
+            </Style>
+          
 
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="Blue" SecondaryColor="DeepOrange" />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>

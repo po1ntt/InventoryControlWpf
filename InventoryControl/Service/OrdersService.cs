@@ -38,7 +38,7 @@ namespace InventoryControl.Service
                     Count = count
                     
                 });
-                Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Заказ", context.Orders.Count().ToString());
+                Service.LoggerService.AddLog("Добавление",  "Заказ", context.Orders.Count().ToString());
 
                 result = "Запись успешно добавлена";
                 context.SaveChanges();

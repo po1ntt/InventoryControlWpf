@@ -42,7 +42,7 @@ namespace InventoryControl.Service
                         namebrand = namebrand
                         
                     });
-                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Бренд", namebrand);
+                    Service.LoggerService.AddLog("Добавление", "Бренд", namebrand);
                     result = "Новый бренд успешно добавлен";
                     context.SaveChanges();
                 }
@@ -58,7 +58,7 @@ namespace InventoryControl.Service
                 if(brand != null)
                 {
                     brand.namebrand = namebrand;
-                    Service.LoggerService.AddLog("Редактирование", UserService.userToSave.Login, DateTime.Now, "Бренд", namebrand);
+                    Service.LoggerService.AddLog("Редактирование",  "Бренд", namebrand);
 
                     context.SaveChanges();
                     result = "Бренд успешно изменен";
@@ -79,7 +79,7 @@ namespace InventoryControl.Service
                 if(brandtodelete != null)
                 {
                     context.Brand.Remove(brandtodelete);
-                    Service.LoggerService.AddLog("Удаление", UserService.userToSave.Login, DateTime.Now, "Бренд", brand.namebrand);
+                    Service.LoggerService.AddLog("Удаление", "Бренд", brand.namebrand);
 
                     context.SaveChanges();
 

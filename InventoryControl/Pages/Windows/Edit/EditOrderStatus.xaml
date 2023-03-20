@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EditOrderStatus" Height="300" Width="400"
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-    <Grid>
+    <Grid Style="{StaticResource  BackgroundGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="140*"/>

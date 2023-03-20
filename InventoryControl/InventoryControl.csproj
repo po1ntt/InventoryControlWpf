@@ -161,6 +161,10 @@
     <Compile Include="Control\NavMenu.xaml.cs">
       <DependentUpon>NavMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\TitlePage.xaml.cs">
+      <DependentUpon>TitlePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ViewModels\VMNavMeny.cs" />
     <Compile Include="Pages\AboutEquipPage.xaml.cs">
       <DependentUpon>AboutEquipPage.xaml</DependentUpon>
     </Compile>
@@ -236,6 +240,9 @@
     <Compile Include="Pages\Windows\Edit\EditTypeEquipment.xaml.cs">
       <DependentUpon>EditTypeEquipment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Windows\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service\BrandService.cs" />
     <Compile Include="Service\DepartamentService.cs" />
     <Compile Include="Service\EquipmentDepartamentService.cs" />
@@ -251,6 +258,10 @@
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\WarehouseEquipService.cs" />
     <Page Include="Control\NavMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\TitlePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -368,6 +379,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Windows\Edit\EditTypeEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

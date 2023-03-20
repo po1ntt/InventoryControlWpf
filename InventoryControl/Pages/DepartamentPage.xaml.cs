@@ -27,22 +27,19 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class DepartamentPage : Page
     {
-
+        public string TitlePage { get; set; }
         public DepartamentPage()
         {
             InitializeComponent();
-
+            DataContext = this;
+            TitlePage = "Департаменты";
             DepCombo.ItemsSource = Service.DepartamentService.GetDepartamentInfo();
             DepCombo.SelectedIndex = 0;
             var departament = DepCombo.SelectedItem as Departament;
             DepartamentEquipDG.ItemsSource = Service.EquipmentDepartamentService.GetEquipmentDepartamentInfo(departament.name_departament);
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Classes.Frame.FrameOBJ.Navigate(new HomePage());
-
-        }
+      
 
         private void DepCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

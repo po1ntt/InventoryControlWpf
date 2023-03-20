@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:InventoryControl"
         mc:Ignorable="d"
         Title="Складской учет" Height="1000" Width="1200"
-        Icon="./images/iconwarehouse.png">
+        Icon="./images/iconwarehouse.png"
+        WindowState="Maximized">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
     </Grid>

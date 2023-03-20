@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="ThisControl">
     <UserControl.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -28,26 +29,35 @@
             <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#3e21cf" Grid.Column="1">
-        <StackPanel VerticalAlignment="Top">
-            <Grid Height="150" Background="White">
+    <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#060531" Grid.Column="1" >
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <StackPanel>
+
+            <Grid Height="150" Background="#060531">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="29*"/>
                     <ColumnDefinition Width="71*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="InfoAboutUser" Grid.Column="1" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock FontWeight="Bold"  Text="Пользователь" HorizontalAlignment="Center" Margin="5" FontSize="20" ></TextBlock>
-                    <TextBlock FontWeight="Bold"  Text="{Binding Role,StringFormat='Роль: {0}' }" HorizontalAlignment="Center" Margin="5" FontSize="15" ></TextBlock>
-                    <TextBlock FontWeight="Bold" Text="{Binding Login, StringFormat='Логин: {0}'}" HorizontalAlignment="Center" Margin="5" FontSize="15"></TextBlock>
+                    <TextBlock FontWeight="Bold"  Text="{Binding UserRole,StringFormat='Роль: {0}' }" HorizontalAlignment="Center" Margin="5" FontSize="15" ></TextBlock>
+                    <TextBlock FontWeight="Bold" Text="{Binding UserName, StringFormat='Логин: {0}'}" HorizontalAlignment="Center" Margin="5" FontSize="15"></TextBlock>
                 </StackPanel>
                
 
                 <Button x:Name="ButtonCloseMenu" Width="60" Height="60" VerticalAlignment="top" HorizontalAlignment="Left"   Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click" Grid.ColumnSpan="2">
-                    <materialDesign:PackIcon Foreground="#3e21cf" Kind="ArrowRight" Width="30" Height="32" />
+                    <materialDesign:PackIcon Foreground="White" Kind="ArrowRight" Width="30" Height="32" />
                 </Button>
 
                 <Button x:Name="ButtonOpenMenu" Width="60" Height="60" VerticalAlignment="top" HorizontalAlignment="Left"   Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click" Grid.ColumnSpan="2">
-                    <materialDesign:PackIcon Foreground="#3e21cf" Kind="Menu" Width="30" Height="32" />
+                    <materialDesign:PackIcon Foreground="White" Kind="Menu" Width="30" Height="32" />
                 </Button>
             </Grid>
             <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White">

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Edit"
         mc:Ignorable="d"
         Title="EditTypeEquipment" Height="600" Width="400" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-    <Grid>
+    <Grid Style="{StaticResource  BackgroundGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48*"/>
             <RowDefinition Height="438*"/>

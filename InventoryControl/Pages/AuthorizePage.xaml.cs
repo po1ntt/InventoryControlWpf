@@ -1,6 +1,8 @@
-﻿using System;
+﻿using InventoryControl.BdWork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,20 +22,24 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class AuthorizePage : Page
     {
+      
+
         public AuthorizePage()
         {
             InitializeComponent();
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bool result = Service.UserService.LoginUser(txbLogin.Text, txbPassword.Text);
+            bool result = Service.UserService.LoginUser(txbLogin.Text, txbPassword.Password, IsRememberMe.IsChecked.Value);
 
             if(result == true)
             {
                 MessageBox.Show("Авторизация прошла успешно");
+               
                 Classes.Frame.FrameOBJ.Navigate(new HomePage());
-
+              
             }
             else
             {

@@ -7,27 +7,28 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InventoryControl.Pages
+namespace InventoryControl.Control
 {
     /// <summary>
-    /// Логика взаимодействия для Documents.xaml
+    /// Логика взаимодействия для TitlePage.xaml
     /// </summary>
-    public partial class Documents : Page
+    public partial class TitlePage : UserControl
     {
-        public string TitlePage { get; set; } = "Документы";
-        public Documents()
+        public TitlePage()
         {
             InitializeComponent();
-            DataContext= this;
+           
         }
 
-     
+        private void Back_Click(object sender, MouseButtonEventArgs e)
+        {
+            Classes.Frame.FrameOBJ.GoBack();
+        }
     }
 }

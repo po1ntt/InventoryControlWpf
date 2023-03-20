@@ -4,19 +4,34 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InventoryControl.Pages"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="800"
       Title="AuthorizePage">
+        <Page.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                <GradientStop Color="#060531" Offset="0"></GradientStop>
+                <GradientStop Color="#1b1488"  Offset="0.75"></GradientStop>
+            </LinearGradientBrush>
+        </Page.Background>
 
-    <Grid Background="White">
-        <Border BorderBrush="Purple" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" CornerRadius="30">
+    <Grid>
+        <Border BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20" CornerRadius="30">
             <StackPanel MinWidth="400" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image Width="350" Height="300" Source="../images/warehouseLogo.png"></Image>
 
                 <TextBlock Text="Логин:" FontSize="20" FontWeight="DemiBold"></TextBlock>
                 <TextBox x:Name="txbLogin"  FontSize="20" FontWeight="DemiBold" ></TextBox>
                 <TextBlock Text="Пароль:" FontWeight="DemiBold" FontSize="20"></TextBlock>
-                <TextBox x:Name="txbPassword" Margin="0,0,0,10" FontSize="20" FontWeight="DemiBold"></TextBox>
+                <PasswordBox x:Name="txbPassword"  Margin="0,0,0,10" FontSize="20" FontWeight="DemiBold"></PasswordBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox x:Name="IsRememberMe" Background="White" VerticalAlignment="Center"  Style="{StaticResource MaterialDesignSwitchLightToggleButton}" FontWeight="DemiBold" ></CheckBox>
+                    <Label Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20">Запомнить меня</Label>
+                </Grid>
                 <Button Content="Войти в аккаунт" Click="Button_Click"></Button>
             </StackPanel>
         </Border>

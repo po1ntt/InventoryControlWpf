@@ -22,7 +22,7 @@ namespace InventoryControl.Service
             }
             return Collection;
         }
-        public static string AddLog(string Operation, string UserLogin, DateTime date, string changedata, string namedata)
+        public static string AddLog(string Operation,  string changedata, string namedata)
         {
             string result = "Ошибка";
 
@@ -32,10 +32,10 @@ namespace InventoryControl.Service
                     context.Logger.Add(new Logger
                     {
                         Operation = Operation,
-                        UserLogin = UserLogin,
+                        UserLogin = UserService.UserName,
                         ChangeData = changedata,
                         NameData = namedata,
-                        TimeChange = date,
+                        TimeChange = DateTime.Now,
                         id_log = context.Logger.Count() + 1
 
 

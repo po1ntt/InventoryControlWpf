@@ -42,7 +42,7 @@ namespace InventoryControl.Service
                         NameTypeEquip = typeEquip
 
                     });
-                    Service.LoggerService.AddLog("Добавление", UserService.userToSave.Login, DateTime.Now, "Тип техники", typeEquip);
+                    Service.LoggerService.AddLog("Добавление", "Тип техники", typeEquip);
 
                     result = "Новый тип техники успешно добавлен";
                     context.SaveChanges();
@@ -59,7 +59,7 @@ namespace InventoryControl.Service
                 if (departament != null)
                 {
                     departament.NameTypeEquip = nametype;
-                    Service.LoggerService.AddLog("Редактирование", UserService.userToSave.Login, DateTime.Now, "Тип техники", typeOfEquipment.NameTypeEquip);
+                    Service.LoggerService.AddLog("Редактирование", "Тип техники", typeOfEquipment.NameTypeEquip);
 
                     context.SaveChanges();
                     result = "Тип техники успешно изменен";
@@ -80,7 +80,7 @@ namespace InventoryControl.Service
                 if (brandtodelete != null)
                 {
                     context.TypeOfEquipment.Remove(brandtodelete);
-                    Service.LoggerService.AddLog("Удаление", UserService.userToSave.Login, DateTime.Now, "Тип техники", type.NameTypeEquip);
+                    Service.LoggerService.AddLog("Удаление", "Тип техники", type.NameTypeEquip);
 
                     context.SaveChanges();
                     result = "Тип техники с названием " + type.NameTypeEquip + " успешно удален";

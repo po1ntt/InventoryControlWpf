@@ -24,9 +24,11 @@ namespace InventoryControl.Control
     /// </summary>
     public partial class NavMenu : UserControl
     {
+        public double GridWith { get; set; }
         public NavMenu()
         {
             InitializeComponent();
+            DataContext = new ViewModels.VMNavMeny();
         }
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -37,14 +39,16 @@ namespace InventoryControl.Control
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
+           
             InfoAboutUser.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
+           
         }
 
         private void Logs_Click(object sender, MouseButtonEventArgs e)
         {
-            if (UserService.userToSave.Role == "Admin")
+            if (UserService.UserRole == "Admin")
             {
                 Classes.Frame.FrameOBJ.Navigate(new LoggerPage());
             }
@@ -80,7 +84,8 @@ namespace InventoryControl.Control
         }
         private void Logout_Click(object sender, MouseButtonEventArgs e)
         {
-            Service.UserService.userToSave = null;
+            Properties.Settings.Default.Reset();
+            Properties.Settings.Default.Save();
             Classes.Frame.FrameOBJ.Navigate(new AuthorizePage());
         }
     }

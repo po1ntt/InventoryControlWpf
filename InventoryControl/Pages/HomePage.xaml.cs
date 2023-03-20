@@ -33,9 +33,11 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class HomePage : Page
     {
+       
+
         public HomePage()
         {
-            this.DataContext = Service.UserService.userToSave;
+            DataContext = new UserService();
             InitializeComponent();
             bradncombo.ItemsSource = BrandService.GetBrandInfo();
             typeofequip.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();

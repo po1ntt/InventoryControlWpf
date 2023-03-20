@@ -7,27 +7,26 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InventoryControl.Pages
+namespace InventoryControl.Pages.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Documents.xaml
+    /// Логика взаимодействия для LoginWindow.xaml
     /// </summary>
-    public partial class Documents : Page
+    public partial class LoginWindow : Window
     {
-        public string TitlePage { get; set; } = "Документы";
-        public Documents()
+        public LoginWindow()
         {
             InitializeComponent();
-            DataContext= this;
         }
 
-     
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

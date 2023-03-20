@@ -8,9 +8,10 @@
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1200"
       Title="HomePage"
-      Background="White"
+      
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
-    <Grid>
+    <Grid Background="#060531">
+       
 
 
         <Grid>
@@ -83,12 +84,12 @@
                 </StackPanel>
 
                 <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
-                <ComboBox SelectionChanged="bradncombo_SelectionChanged" DisplayMemberPath="namebrand" AllowDrop="True"  FontSize="30" x:Name="bradncombo" Height="50"  Margin="0 0 0 20">
-
+                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="bradncombo_SelectionChanged"  DisplayMemberPath="namebrand" AllowDrop="True" Foreground="White"  FontSize="15" x:Name="bradncombo"  Margin="0 0 0 20">
+                   
                 </ComboBox>
 
                 <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
-                <ComboBox SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" FontSize="30" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
+                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" FontSize="30" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
 
                 </ComboBox>
                 <Button Background="Green" BorderBrush="Green" Margin="0,0,0,20" Click="Excel_Click">Экспорт Excel</Button>

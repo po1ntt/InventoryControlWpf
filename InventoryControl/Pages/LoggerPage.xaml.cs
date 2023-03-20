@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryControl.Control;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,12 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class LoggerPage : Page
     {
+        public string TitlePage { get; set; }
         public LoggerPage()
         {
             InitializeComponent();
+            DataContext = this;
+            TitlePage = "Логи";
             dgdata.ItemsSource = Service.LoggerService.GetLogInfo();
         }
 
@@ -61,9 +65,6 @@ namespace InventoryControl.Pages
             System.Windows.MessageBox.Show("Файл успешно создан!");
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Classes.Frame.FrameOBJ.GoBack();
-        }
+      
     }
 }

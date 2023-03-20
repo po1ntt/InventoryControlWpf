@@ -7,10 +7,12 @@
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1200"
       Title="Orders"
-      Background="White">
+      Background="White"
+      xmlns:control="clr-namespace:InventoryControl.Control">
 
-    <Grid>
+    <Grid Style="{StaticResource BackgroundGrid}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="63*"/>
             <RowDefinition Height="937*"/>
         </Grid.RowDefinitions>
@@ -18,11 +20,12 @@
             <ColumnDefinition Width="103*"/>
             <ColumnDefinition Width="197*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="324,0" Width="140">
+        <control:TitlePage Grid.ColumnSpan="3"></control:TitlePage>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="324,0" Width="140">
             <TextBlock Text="Заказы" VerticalAlignment="Center" FontSize="40" FontWeight="Bold"></TextBlock>
             
         </StackPanel>
-        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
             <Grid >
                 <DataGrid x:Name="WareHouseEquipDG" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.ContextMenu>
@@ -83,8 +86,8 @@
                 </DataGrid>
             </Grid>
         </ScrollViewer>
-        <TextBlock Text="Фильтры:" Grid.Row="0" VerticalAlignment="Center" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Height="40" Margin="135,12,135,11" Width="142" />
-        <StackPanel  Grid.Row="1" Margin="10 20">
+        <TextBlock Text="Фильтры:" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" Height="40" Margin="135,12,135,11" Width="142" />
+        <StackPanel  Grid.Row="2" Margin="10 20">
 
             <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
             <TextBox Height="50" Margin="0 0 0 20" >
@@ -126,7 +129,6 @@
                 <TextBox materialDesign:HintAssist.Hint="От" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                 <TextBox materialDesign:HintAssist.Hint="До" Grid.Column="2" FontSize="18px" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                 <Button Content="Добавить новый заказ" Click="Button_Click" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3" HorizontalAlignment="Center" Background="Transparent" Foreground="Black" BorderBrush="Green" Height="80" Width="250" ></Button>
-                <Button Click="Back_Click" Content="Назад на главную" Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center"  Background="Transparent" Foreground="Black" BorderBrush="Blue"  Height="80" Width="250" ></Button>
 
             </Grid>
 

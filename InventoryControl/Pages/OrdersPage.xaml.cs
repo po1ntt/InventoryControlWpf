@@ -28,17 +28,17 @@ namespace InventoryControl.Pages
     /// </summary>
     public partial class OrdersPage : Page
     {
+        public string TitlePage { get; set; }
         public OrdersPage()
         {
             InitializeComponent();
             WareHouseEquipDG.ItemsSource = OrdersService.GetOrdersInfo();
             comboOrder.ItemsSource = StatusService.GetStatusInfo();
+            DataContext = this;
+            TitlePage = "Заказы";
         }
 
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
-            Classes.Frame.FrameOBJ.GoBack();
-        }
+     
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
             Stream myStream;
