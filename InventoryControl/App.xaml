@@ -21,10 +21,7 @@
                 <Setter Property="Foreground" Value="White"></Setter>
 
             </Style>
-            <Style  TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignToolForegroundButton}" >
-            <Setter Property="Foreground" Value="White"></Setter>
-
-            </Style>
+            
             <Style  TargetType="TabControl" BasedOn="{StaticResource MaterialDesignFilledTabControl}" >
                 <Setter Property="Foreground" Value="White"></Setter>
 
