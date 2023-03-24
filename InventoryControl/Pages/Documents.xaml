@@ -22,20 +22,55 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button  Background="#1b1488" Content="Перевозки" BorderBrush="Transparent" >
-                    
-                </Button>
-                <Button Background="#1b1488"  Content="Получка" BorderBrush="Transparent" Grid.Column="1">
-                   
-                </Button>
-                
+                <TabControl Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignFilledTabControl}">
+                    <TabItem Header="УПД">
+                        <DataGrid x:Name="DGDATA" SelectionMode="Single" SelectionChanged="DGDATA_SelectionChanged"  IsReadOnly="True" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="1*" Header="Номер" Binding="{Binding NumberUniversal}"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1*"  Header="Дата создания" Binding="{Binding DateCreated,StringFormat=dd.MM.yyy}"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1*"  Header="Кол-во обородования" Binding="{Binding count}"></DataGridTextColumn>
+
+                                <DataGridTemplateColumn >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign1:PackIcon Kind="FileDocument" Foreground="White" Height="50"  Background="Transparent">
+
+                                            </materialDesign1:PackIcon>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <materialDesign1:PackIcon PreviewMouseLeftButtonDown="PackIcon_PreviewMouseLeftButtonDown" Kind="Watch" Foreground="White" Height="50"  Background="Transparent">
+
+                                            </materialDesign1:PackIcon>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Приемка">
+                        <DataGrid AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="1*" Header="Название"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1*" Header="Тип"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1*" Header="Номер"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1*"  Header="Дата создания"></DataGridTextColumn>
+                                <DataGridTemplateColumn Width="1*">
+
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="1*">
+
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
             </Grid>
-            <Grid Grid.Row="3" Background="White" x:Name="Perevozki" Visibility="Visible">
-                    
-            </Grid>
-            <Grid Grid.Row="3" Background="White" x:Name="Poluchka" Visibility="Hidden">
-                
-            </Grid>
+            
         </Grid>
     </Grid>
 </Page>

@@ -167,6 +167,19 @@
           <Property Name="id_typeEquip" Type="int" Nullable="false" />
           <Property Name="NameTypeEquip" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Universalniy_Dogovor_peredachi">
+          <Key>
+            <PropertyRef Name="id_universaldogovor" />
+          </Key>
+          <Property Name="id_universaldogovor" Type="int" Nullable="false" />
+          <Property Name="NumberUniversal" Type="nvarchar(max)" />
+          <Property Name="Seller_id" Type="int" />
+          <Property Name="Shipper_id" Type="int" />
+          <Property Name="INNByuer" Type="nvarchar(max)" />
+          <Property Name="Currency_id" Type="int" />
+          <Property Name="Items_upd_id" Type="int" />
+          <Property Name="DateCreated" Type="date" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id_user" />
@@ -292,12 +305,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ItemsNakladnay_Nakladnay">
-          <End Role="Nakladnay" Type="Self.Nakladnay" Multiplicity="0..1" />
+        <Association Name="FK_ItemsNakladnay_Universalniy_Dogovor_peredachi">
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="0..1" />
           <End Role="ItemsNakladnay" Type="Self.ItemsNakladnay" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Nakladnay">
-              <PropertyRef Name="id_nakladnay" />
+            <Principal Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="id_universaldogovor" />
             </Principal>
             <Dependent Role="ItemsNakladnay">
               <PropertyRef Name="id_nakladnay" />
@@ -400,6 +413,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="id_currency" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="Currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="id_seller" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="Seller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Shipper">
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="id_shipper" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="Shipper_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WarehouseEquipment_Equipment">
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
           <End Role="WarehouseEquipment" Type="Self.WarehouseEquipment" Multiplicity="*" />
@@ -412,37 +461,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище InventoryСontrolModelContainer">
           <EntitySet Name="ActPriemka" EntityType="Self.ActPriemka" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
@@ -462,6 +480,7 @@
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfEquipment" EntityType="Self.TypeOfEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Universalniy_Dogovor_peredachi" EntityType="Self.Universalniy_Dogovor_peredachi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WarehouseEquipment" EntityType="Self.WarehouseEquipment" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ActPriemka_Insurance_id" Association="Self.FK_ActPriemka_Insurance_id">
@@ -500,8 +519,8 @@
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="ItemsNakladnay" EntitySet="ItemsNakladnay" />
           </AssociationSet>
-          <AssociationSet Name="FK_ItemsNakladnay_Nakladnay" Association="Self.FK_ItemsNakladnay_Nakladnay">
-            <End Role="Nakladnay" EntitySet="Nakladnay" />
+          <AssociationSet Name="FK_ItemsNakladnay_Universalniy_Dogovor_peredachi" Association="Self.FK_ItemsNakladnay_Universalniy_Dogovor_peredachi">
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
             <End Role="ItemsNakladnay" EntitySet="ItemsNakladnay" />
           </AssociationSet>
           <AssociationSet Name="FK_Orders_Equipment" Association="Self.FK_Orders_Equipment">
@@ -535,6 +554,18 @@
           <AssociationSet Name="FK_ShetFactura_Shipper" Association="Self.FK_ShetFactura_Shipper">
             <End Role="Shipper" EntitySet="Shipper" />
             <End Role="ShetFactura" EntitySet="ShetFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Currency" Association="Self.FK_Universalniy_Dogovor_peredachi_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Seller" Association="Self.FK_Universalniy_Dogovor_peredachi_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Shipper" Association="Self.FK_Universalniy_Dogovor_peredachi_Shipper">
+            <End Role="Shipper" EntitySet="Shipper" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
           </AssociationSet>
           <AssociationSet Name="FK_WarehouseEquipment_Equipment" Association="Self.FK_WarehouseEquipment_Equipment">
             <End Role="Equipment" EntitySet="Equipment" />
@@ -579,6 +610,7 @@
           <Property Name="NameCurrency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NumberCurrency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ShetFactura" Relationship="Self.FK_ShetFactura_Currency" FromRole="Currency" ToRole="ShetFactura" />
+          <NavigationProperty Name="Universalniy_Dogovor_peredachi" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Currency" FromRole="Currency" ToRole="Universalniy_Dogovor_peredachi" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -633,7 +665,7 @@
           <Property Name="price" Type="Int32" />
           <Property Name="id_nakladnay" Type="Int32" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_ItemsNakladnay_Equipment" FromRole="ItemsNakladnay" ToRole="Equipment" />
-          <NavigationProperty Name="Nakladnay" Relationship="Self.FK_ItemsNakladnay_Nakladnay" FromRole="ItemsNakladnay" ToRole="Nakladnay" />
+          <NavigationProperty Name="Universalniy_Dogovor_peredachi" Relationship="Self.FK_ItemsNakladnay_Universalniy_Dogovor_peredachi" FromRole="ItemsNakladnay" ToRole="Universalniy_Dogovor_peredachi" />
         </EntityType>
         <EntityType Name="Logger">
           <Key>
@@ -654,7 +686,6 @@
           <Property Name="NumberNakladnay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateCreated" Type="DateTime" Precision="0" />
           <Property Name="id_itemNaklad" Type="Int32" />
-          <NavigationProperty Name="ItemsNakladnay" Relationship="Self.FK_ItemsNakladnay_Nakladnay" FromRole="Nakladnay" ToRole="ItemsNakladnay" />
           <NavigationProperty Name="ShetFactura" Relationship="Self.FK_ShetFactura_Nakladnay" FromRole="Nakladnay" ToRole="ShetFactura" />
         </EntityType>
         <EntityType Name="Orders">
@@ -692,6 +723,7 @@
           <NavigationProperty Name="ActPriemka" Relationship="Self.FK_ActPriemka_Seller" FromRole="Seller" ToRole="ActPriemka" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Seller" FromRole="Seller" ToRole="Orders" />
           <NavigationProperty Name="ShetFactura" Relationship="Self.FK_ShetFactura_Seller" FromRole="Seller" ToRole="ShetFactura" />
+          <NavigationProperty Name="Universalniy_Dogovor_peredachi" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Seller" FromRole="Seller" ToRole="Universalniy_Dogovor_peredachi" />
         </EntityType>
         <EntityType Name="ShetFactura">
           <Key>
@@ -718,6 +750,7 @@
           <Property Name="AdressShipper" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ActPriemka" Relationship="Self.FK_ActPriemka_Shipper" FromRole="Shipper" ToRole="ActPriemka" />
           <NavigationProperty Name="ShetFactura" Relationship="Self.FK_ShetFactura_Shipper" FromRole="Shipper" ToRole="ShetFactura" />
+          <NavigationProperty Name="Universalniy_Dogovor_peredachi" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Shipper" FromRole="Shipper" ToRole="Universalniy_Dogovor_peredachi" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -744,6 +777,23 @@
           <Property Name="id_typeEquip" Type="Int32" Nullable="false" />
           <Property Name="NameTypeEquip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_Equipment_TypeOfEquipment" FromRole="TypeOfEquipment" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Universalniy_Dogovor_peredachi">
+          <Key>
+            <PropertyRef Name="id_universaldogovor" />
+          </Key>
+          <Property Name="id_universaldogovor" Type="Int32" Nullable="false" />
+          <Property Name="NumberUniversal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Seller_id" Type="Int32" />
+          <Property Name="Shipper_id" Type="Int32" />
+          <Property Name="INNByuer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Currency_id" Type="Int32" />
+          <Property Name="Items_upd_id" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Currency" FromRole="Universalniy_Dogovor_peredachi" ToRole="Currency" />
+          <NavigationProperty Name="ItemsNakladnay" Relationship="Self.FK_ItemsNakladnay_Universalniy_Dogovor_peredachi" FromRole="Universalniy_Dogovor_peredachi" ToRole="ItemsNakladnay" />
+          <NavigationProperty Name="Seller" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Seller" FromRole="Universalniy_Dogovor_peredachi" ToRole="Seller" />
+          <NavigationProperty Name="Shipper" Relationship="Self.FK_Universalniy_Dogovor_peredachi_Shipper" FromRole="Universalniy_Dogovor_peredachi" ToRole="Shipper" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -835,6 +885,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="id_currency" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="Currency_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DepartamentEquipment_Departament">
           <End Role="Departament" Type="Self.Departament" Multiplicity="0..1" />
           <End Role="DepartamentEquipment" Type="Self.DepartamentEquipment" Multiplicity="*" />
@@ -907,12 +969,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ItemsNakladnay_Nakladnay">
-          <End Role="Nakladnay" Type="Self.Nakladnay" Multiplicity="0..1" />
+        <Association Name="FK_ItemsNakladnay_Universalniy_Dogovor_peredachi">
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="0..1" />
           <End Role="ItemsNakladnay" Type="Self.ItemsNakladnay" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Nakladnay">
-              <PropertyRef Name="id_nakladnay" />
+            <Principal Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="id_universaldogovor" />
             </Principal>
             <Dependent Role="ItemsNakladnay">
               <PropertyRef Name="id_nakladnay" />
@@ -979,6 +1041,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Seller">
+          <End Role="Seller" Type="Self.Seller" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seller">
+              <PropertyRef Name="id_seller" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
+              <PropertyRef Name="Seller_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ShetFactura_Shipper">
           <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
           <End Role="ShetFactura" Type="Self.ShetFactura" Multiplicity="*" />
@@ -987,6 +1061,18 @@
               <PropertyRef Name="id_shipper" />
             </Principal>
             <Dependent Role="ShetFactura">
+              <PropertyRef Name="Shipper_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Universalniy_Dogovor_peredachi_Shipper">
+          <End Role="Shipper" Type="Self.Shipper" Multiplicity="0..1" />
+          <End Role="Universalniy_Dogovor_peredachi" Type="Self.Universalniy_Dogovor_peredachi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shipper">
+              <PropertyRef Name="id_shipper" />
+            </Principal>
+            <Dependent Role="Universalniy_Dogovor_peredachi">
               <PropertyRef Name="Shipper_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1010,6 +1096,7 @@
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TypeOfEquipment" EntityType="Self.TypeOfEquipment" />
+          <EntitySet Name="Universalniy_Dogovor_peredachi" EntityType="Self.Universalniy_Dogovor_peredachi" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="WarehouseEquipment" EntityType="Self.WarehouseEquipment" />
           <AssociationSet Name="FK_ActPriemka_Insurance_id" Association="Self.FK_ActPriemka_Insurance_id">
@@ -1036,6 +1123,10 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="ShetFactura" EntitySet="ShetFactura" />
           </AssociationSet>
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Currency" Association="Self.FK_Universalniy_Dogovor_peredachi_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
+          </AssociationSet>
           <AssociationSet Name="FK_DepartamentEquipment_Departament" Association="Self.FK_DepartamentEquipment_Departament">
             <End Role="Departament" EntitySet="Departament" />
             <End Role="DepartamentEquipment" EntitySet="DepartamentEquipment" />
@@ -1060,8 +1151,8 @@
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="WarehouseEquipment" EntitySet="WarehouseEquipment" />
           </AssociationSet>
-          <AssociationSet Name="FK_ItemsNakladnay_Nakladnay" Association="Self.FK_ItemsNakladnay_Nakladnay">
-            <End Role="Nakladnay" EntitySet="Nakladnay" />
+          <AssociationSet Name="FK_ItemsNakladnay_Universalniy_Dogovor_peredachi" Association="Self.FK_ItemsNakladnay_Universalniy_Dogovor_peredachi">
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
             <End Role="ItemsNakladnay" EntitySet="ItemsNakladnay" />
           </AssociationSet>
           <AssociationSet Name="FK_ShetFactura_Nakladnay" Association="Self.FK_ShetFactura_Nakladnay">
@@ -1084,52 +1175,19 @@
             <End Role="Seller" EntitySet="Seller" />
             <End Role="ShetFactura" EntitySet="ShetFactura" />
           </AssociationSet>
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Seller" Association="Self.FK_Universalniy_Dogovor_peredachi_Seller">
+            <End Role="Seller" EntitySet="Seller" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
+          </AssociationSet>
           <AssociationSet Name="FK_ShetFactura_Shipper" Association="Self.FK_ShetFactura_Shipper">
             <End Role="Shipper" EntitySet="Shipper" />
             <End Role="ShetFactura" EntitySet="ShetFactura" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(InventoryСontrolModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(InventoryСontrolModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Universalniy_Dogovor_peredachi_Shipper" Association="Self.FK_Universalniy_Dogovor_peredachi_Shipper">
+            <End Role="Shipper" EntitySet="Shipper" />
+            <End Role="Universalniy_Dogovor_peredachi" EntitySet="Universalniy_Dogovor_peredachi" />
+          </AssociationSet>
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1316,6 +1374,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Universalniy_Dogovor_peredachi">
+            <EntityTypeMapping TypeName="InventoryСontrolModel.Universalniy_Dogovor_peredachi">
+              <MappingFragment StoreEntitySet="Universalniy_Dogovor_peredachi">
+                <ScalarProperty Name="id_universaldogovor" ColumnName="id_universaldogovor" />
+                <ScalarProperty Name="NumberUniversal" ColumnName="NumberUniversal" />
+                <ScalarProperty Name="Seller_id" ColumnName="Seller_id" />
+                <ScalarProperty Name="Shipper_id" ColumnName="Shipper_id" />
+                <ScalarProperty Name="INNByuer" ColumnName="INNByuer" />
+                <ScalarProperty Name="Currency_id" ColumnName="Currency_id" />
+                <ScalarProperty Name="Items_upd_id" ColumnName="Items_upd_id" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="InventoryСontrolModel.Users">
               <MappingFragment StoreEntitySet="Users">
@@ -1335,30 +1407,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище InventoryСontrolModel.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище InventoryСontrolModel.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище InventoryСontrolModel.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище InventoryСontrolModel.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="InventoryСontrolModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище InventoryСontrolModel.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="InventoryСontrolModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище InventoryСontrolModel.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище InventoryСontrolModel.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

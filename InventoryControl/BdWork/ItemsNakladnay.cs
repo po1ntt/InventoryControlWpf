@@ -22,6 +22,6 @@ namespace InventoryControl.BdWork
         public Nullable<int> id_nakladnay { get; set; }
     
         public virtual Equipment Equipment { get; set; }
-        public virtual Nakladnay Nakladnay { get; set; }
+        public virtual Universalniy_Dogovor_peredachi Universalniy_Dogovor_peredachi { get; set; }
     }
 }

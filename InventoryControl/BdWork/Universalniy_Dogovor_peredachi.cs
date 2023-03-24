@@ -12,20 +12,27 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class Nakladnay
+    public partial class Universalniy_Dogovor_peredachi
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Nakladnay()
+        public Universalniy_Dogovor_peredachi()
         {
-            this.ShetFactura = new HashSet<ShetFactura>();
+            this.ItemsNakladnay = new HashSet<ItemsNakladnay>();
         }
     
-        public int id_nakladnay { get; set; }
-        public string NumberNakladnay { get; set; }
+        public int id_universaldogovor { get; set; }
+        public string NumberUniversal { get; set; }
+        public Nullable<int> Seller_id { get; set; }
+        public Nullable<int> Shipper_id { get; set; }
+        public string INNByuer { get; set; }
+        public Nullable<int> Currency_id { get; set; }
+        public Nullable<int> Items_upd_id { get; set; }
         public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<int> id_itemNaklad { get; set; }
     
+        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShetFactura> ShetFactura { get; set; }
+        public virtual ICollection<ItemsNakladnay> ItemsNakladnay { get; set; }
+        public virtual Seller Seller { get; set; }
+        public virtual Shipper Shipper { get; set; }
     }
 }

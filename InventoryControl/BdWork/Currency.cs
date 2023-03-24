@@ -18,6 +18,7 @@ namespace InventoryControl.BdWork
         public Currency()
         {
             this.ShetFactura = new HashSet<ShetFactura>();
+            this.Universalniy_Dogovor_peredachi = new HashSet<Universalniy_Dogovor_peredachi>();
         }
     
         public int id_currency { get; set; }
@@ -26,5 +27,7 @@ namespace InventoryControl.BdWork
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShetFactura> ShetFactura { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Universalniy_Dogovor_peredachi> Universalniy_Dogovor_peredachi { get; set; }
     }
 }

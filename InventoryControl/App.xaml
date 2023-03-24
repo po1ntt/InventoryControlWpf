@@ -22,14 +22,7 @@
 
             </Style>
             
-            <Style  TargetType="TabControl" BasedOn="{StaticResource MaterialDesignFilledTabControl}" >
-                <Setter Property="Foreground" Value="White"></Setter>
-
-            </Style>
-            <Style  TargetType="TabItem" BasedOn="{StaticResource MaterialDesignHeaderedContentControl}" >
-                <Setter Property="Background" Value="Black"></Setter>
-
-            </Style>
+        
             <Style  TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}" >
                 <Setter Property="Foreground" Value="White"></Setter>
                
