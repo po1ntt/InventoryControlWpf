@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <TabControl Grid.Row="3" Grid.ColumnSpan="2" Style="{StaticResource MaterialDesignFilledTabControl}">
                     <TabItem Header="УПД">
-                        <DataGrid x:Name="DGDATA" SelectionMode="Single" SelectionChanged="DGDATA_SelectionChanged"  IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid x:Name="DGDATA" SelectionMode="Single"   IsReadOnly="True" AutoGenerateColumns="False">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="1*" Header="Номер" Binding="{Binding NumberUniversal}"></DataGridTextColumn>
                                 <DataGridTextColumn Width="1*"  Header="Дата создания" Binding="{Binding DateCreated,StringFormat=dd.MM.yyy}"></DataGridTextColumn>
@@ -46,6 +46,13 @@
                                             <materialDesign1:PackIcon PreviewMouseLeftButtonDown="PackIcon_PreviewMouseLeftButtonDown" Kind="Watch" Foreground="White" Height="50"  Background="Transparent">
 
                                             </materialDesign1:PackIcon>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Content="Вывод в ворд" Click="Button_Click"></Button>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

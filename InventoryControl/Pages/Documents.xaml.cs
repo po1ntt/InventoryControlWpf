@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InventoryControl.BdWork;
+using InventoryControl.Service;
 using Spire.Doc;
 
 namespace InventoryControl.Pages
@@ -57,10 +58,22 @@ namespace InventoryControl.Pages
 
       
 
-        private void DGDATA_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Classes.Frame.FrameOBJ.Navigate(new UPDView(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi));
+     
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var filepath = System.IO.Directory.GetCurrentDirectory();
+           
+            var file = new WordService(@"C:\Users\timat\source\repos\InventoryControlWpf\InventoryControl\WordTemplate\TemplateDocladnay.docx");
+            bool result =  file.Process(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi);
+            if(result == true)
+            {
+                System.Windows.MessageBox.Show("Документ создан");
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(":L");
+            }
         }
     }
 }
