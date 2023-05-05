@@ -95,13 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BdWork\ActPriemka.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="BdWork\Brand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="BdWork\Currency.cs">
+    <Compile Include="BdWork\ComingRecords.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Departament.cs">
@@ -110,13 +107,10 @@
     <Compile Include="BdWork\DepartamentEquipment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BdWork\Employers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="BdWork\Equipment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BdWork\Insurance_id.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BdWork\ItemsNakladnay.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Logger.cs">
@@ -128,31 +122,22 @@
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Model1.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="BdWork\Nakladnay.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="BdWork\Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="BdWork\PlacePriemka.cs">
+    <Compile Include="BdWork\RoleEmployers.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Seller.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BdWork\ShetFactura.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BdWork\Shipper.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Status.cs">
@@ -162,9 +147,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\TypeOfEquipment.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BdWork\Universalniy_Dogovor_peredachi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BdWork\Users.cs">
@@ -206,8 +188,8 @@
     <Compile Include="Pages\PropertiesPage.xaml.cs">
       <DependentUpon>PropertiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UPDView.xaml.cs">
-      <DependentUpon>UPDView.xaml</DependentUpon>
+    <Compile Include="Pages\RecorsOfСoming.xaml.cs">
+      <DependentUpon>RecorsOfСoming.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Windows\Add\AddBrand.xaml.cs">
       <DependentUpon>AddBrand.xaml</DependentUpon>
@@ -217,6 +199,9 @@
     </Compile>
     <Compile Include="Pages\Windows\Add\AddEquipment.xaml.cs">
       <DependentUpon>AddEquipment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Windows\Add\AddRecordComing.xaml.cs">
+      <DependentUpon>AddRecordComing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Windows\Add\AddSeller.xaml.cs">
       <DependentUpon>AddSeller.xaml</DependentUpon>
@@ -271,14 +256,10 @@
     <Compile Include="Service\EquipmentDepartamentService.cs" />
     <Compile Include="Service\EquipmentService.cs" />
     <Compile Include="Service\LoggerService.cs" />
-    <Compile Include="Service\NakladnayService.cs" />
     <Compile Include="Service\OrdersService.cs" />
-    <Compile Include="Service\PriemkaService.cs" />
     <Compile Include="Service\SellerService.cs" />
-    <Compile Include="Service\ShetFacturaService.cs" />
     <Compile Include="Service\StatusService.cs" />
     <Compile Include="Service\TypeEquipmentService.cs" />
-    <Compile Include="Service\updservice.cs" />
     <Compile Include="Service\UserService.cs" />
     <Compile Include="Service\WarehouseEquipService.cs" />
     <Compile Include="Service\WordService.cs" />
@@ -339,7 +320,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UPDView.xaml">
+    <Page Include="Pages\RecorsOfСoming.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,6 +333,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Windows\Add\AddEquipment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Windows\Add\AddRecordComing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -512,8 +497,8 @@
     </Content>
     <Content Include="BdWork\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

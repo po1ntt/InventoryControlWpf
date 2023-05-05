@@ -29,8 +29,8 @@ namespace InventoryControl.Pages
         {
             InitializeComponent();
             DataContext= this;
-            DGDATA.ItemsSource = Service.updservice.GetUPDInfo();
-        }
+/*            DGDATA.ItemsSource = Service.updservice.GetUPDInfo();
+*/        }
         public void ToWordSomeDocument()
         {
 
@@ -53,8 +53,8 @@ namespace InventoryControl.Pages
 
         private void PackIcon_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Classes.Frame.FrameOBJ.Navigate(new UPDView(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi));
-        }
+/*            Classes.Frame.FrameOBJ.Navigate(new UPDView(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi));
+*/        }
 
       
 
@@ -65,15 +65,15 @@ namespace InventoryControl.Pages
             var filepath = System.IO.Directory.GetCurrentDirectory();
            
             var file = new WordService(@"C:\Users\timat\source\repos\InventoryControlWpf\InventoryControl\WordTemplate\TemplateDocladnay.docx");
-            bool result =  file.Process(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi);
-            if(result == true)
+/*            bool result =  file.Process(DGDATA.SelectedItem as Universalniy_Dogovor_peredachi);
+*//*            if(result == true)
             {
                 System.Windows.MessageBox.Show("Документ создан");
             }
             else
             {
                 System.Windows.MessageBox.Show(":L");
-            }
+            }*/
         }
     }
 }

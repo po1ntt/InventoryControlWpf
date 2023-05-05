@@ -36,9 +36,52 @@ namespace InventoryControl.Pages
             comboOrder.ItemsSource = StatusService.GetStatusInfo();
             DataContext = this;
             TitlePage = "Заказы";
+            bradncombo.ItemsSource = BrandService.GetBrandInfo();
+            typeofequip.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();
+        }
+        public static Brand brand;
+        public static TypeOfEquipment type;
+        public static string count;
+        public static string NName;
+        private void bradncombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            brand = bradncombo.SelectedItem as Brand;
+
+            WareHouseEquipDG.ItemsSource = null;
+            WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersOrders(NName, brand, type);
+
         }
 
-     
+        private void typeofequip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            type = typeofequip.SelectedItem as TypeOfEquipment;
+            WareHouseEquipDG.ItemsSource = null;
+
+            WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersOrders(NName, brand, type);
+        }
+        private void DelFilters_Click(object sender, RoutedEventArgs e)
+        {
+            bradncombo.SelectedIndex = -1;
+            typeofequip.SelectedIndex = -1;
+            namefilter.Text = null;
+            WareHouseEquipDG.ItemsSource = null;
+            WareHouseEquipDG.ItemsSource = Service.OrdersService.GetOrdersInfo();
+
+        }
+        private void NameFilter(object sender, TextChangedEventArgs e)
+        {
+
+            string name = ((System.Windows.Controls.TextBox)sender).Text;
+            NName = name;
+            if (name != null)
+            {
+                WareHouseEquipDG.ItemsSource = null;
+
+                WareHouseEquipDG.ItemsSource = Classes.Filters.FiltersOrders(name, brand, type);
+            }
+
+        }
+
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
             Stream myStream;

@@ -12,20 +12,20 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class ActPriemka
+    public partial class Employers
     {
-        public int id_priemka { get; set; }
-        public string NumberPriemka { get; set; }
-        public Nullable<int> placepriemka_id { get; set; }
-        public Nullable<System.DateTime> PriemkaCreatedDate { get; set; }
-        public Nullable<int> seller_id { get; set; }
-        public Nullable<int> Insurance_id { get; set; }
-        public Nullable<int> count { get; set; }
-        public Nullable<int> shipper_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employers()
+        {
+            this.ComingRecords = new HashSet<ComingRecords>();
+        }
     
-        public virtual Insurance_id Insurance_id1 { get; set; }
-        public virtual PlacePriemka PlacePriemka { get; set; }
-        public virtual Seller Seller { get; set; }
-        public virtual Shipper Shipper { get; set; }
+        public int id_employers { get; set; }
+        public string FioEmp { get; set; }
+        public Nullable<int> roleEmployer_id { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ComingRecords> ComingRecords { get; set; }
+        public virtual RoleEmployers RoleEmployers { get; set; }
     }
 }

@@ -35,17 +35,61 @@ namespace InventoryControl.Pages
             TitlePage = "Департаменты";
             DepCombo.ItemsSource = Service.DepartamentService.GetDepartamentInfo();
             DepCombo.SelectedIndex = 0;
-            var departament = DepCombo.SelectedItem as Departament;
-            DepartamentEquipDG.ItemsSource = Service.EquipmentDepartamentService.GetEquipmentDepartamentInfo(departament.name_departament);
+            departamentt = DepCombo.SelectedItem as Departament;
+            DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
+            bradncombo.ItemsSource = BrandService.GetBrandInfo();
+            typeofequip.ItemsSource = TypeEquipmentService.GetTypeOfEquipmentInfo();
+        }
+        public static Brand brand;
+        public static TypeOfEquipment type;
+        public static Departament departamentt;
+
+        public static string count;
+        public static string NName;
+        private void bradncombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            brand = bradncombo.SelectedItem as Brand;
+
+            DepartamentEquipDG.ItemsSource = null;
+            DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt,type, NName);
+
         }
 
-      
+        private void typeofequip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            type = typeofequip.SelectedItem as TypeOfEquipment;
+            DepartamentEquipDG.ItemsSource = null;
+
+            DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
+        }
+        private void DelFilters_Click(object sender, RoutedEventArgs e)
+        {
+            bradncombo.SelectedIndex = -1;
+            typeofequip.SelectedIndex = -1;
+            namefilter.Text = null;
+            DepartamentEquipDG.ItemsSource = null;
+            DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
+
+        }
+        private void NameFilter(object sender, TextChangedEventArgs e)
+        {
+
+            string name = ((System.Windows.Controls.TextBox)sender).Text;
+            NName = name;
+            if (name != null)
+            {
+                DepartamentEquipDG.ItemsSource = null;
+
+                DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
+            }
+
+        }
 
         private void DepCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var departament = DepCombo.SelectedItem as Departament;
+            departamentt = DepCombo.SelectedItem as Departament;
             DepartamentEquipDG.ItemsSource = null;
-            DepartamentEquipDG.ItemsSource = Service.EquipmentDepartamentService.GetEquipmentDepartamentInfo(departament.name_departament);
+            DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
         }
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
@@ -86,9 +130,9 @@ namespace InventoryControl.Pages
             if (departament != null)
             {
                 DepartamentEquipDG.ItemsSource = null;
-                DepartamentEquipDG.ItemsSource = Service.EquipmentDepartamentService.GetEquipmentDepartamentInfo(departament.name_departament);
+                DepartamentEquipDG.ItemsSource = Classes.Filters.FilterDepartamentEquip(brand, departamentt, type, NName);
             }
-          
+
 
         }
 

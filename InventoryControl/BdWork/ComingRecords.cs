@@ -12,18 +12,16 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class Insurance_id
+    public partial class ComingRecords
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Insurance_id()
-        {
-            this.ActPriemka = new HashSet<ActPriemka>();
-        }
+        public int id_comingRecords { get; set; }
+        public Nullable<int> Equipment_id { get; set; }
+        public Nullable<int> CountEquip { get; set; }
+        public string NumberOfNakladnay { get; set; }
+        public Nullable<System.DateTime> DateChanging { get; set; }
+        public Nullable<int> Emp_id { get; set; }
     
-        public int id_insurance { get; set; }
-        public string NameInsurance { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ActPriemka> ActPriemka { get; set; }
+        public virtual Employers Employers { get; set; }
+        public virtual Equipment Equipment { get; set; }
     }
 }

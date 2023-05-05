@@ -25,25 +25,19 @@ namespace InventoryControl.BdWork
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ActPriemka> ActPriemka { get; set; }
         public virtual DbSet<Brand> Brand { get; set; }
-        public virtual DbSet<Currency> Currency { get; set; }
+        public virtual DbSet<ComingRecords> ComingRecords { get; set; }
         public virtual DbSet<Departament> Departament { get; set; }
         public virtual DbSet<DepartamentEquipment> DepartamentEquipment { get; set; }
+        public virtual DbSet<Employers> Employers { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
-        public virtual DbSet<Insurance_id> Insurance_id { get; set; }
-        public virtual DbSet<ItemsNakladnay> ItemsNakladnay { get; set; }
         public virtual DbSet<Logger> Logger { get; set; }
-        public virtual DbSet<Nakladnay> Nakladnay { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<PlacePriemka> PlacePriemka { get; set; }
+        public virtual DbSet<RoleEmployers> RoleEmployers { get; set; }
         public virtual DbSet<Seller> Seller { get; set; }
-        public virtual DbSet<ShetFactura> ShetFactura { get; set; }
-        public virtual DbSet<Shipper> Shipper { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TypeOfEquipment> TypeOfEquipment { get; set; }
-        public virtual DbSet<Universalniy_Dogovor_peredachi> Universalniy_Dogovor_peredachi { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<WarehouseEquipment> WarehouseEquipment { get; set; }
     }

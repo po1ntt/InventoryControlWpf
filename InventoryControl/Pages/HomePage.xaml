@@ -20,9 +20,9 @@
                 <RowDefinition Height="937*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="133*"/>
-                <ColumnDefinition Width="467*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
            
 
@@ -73,35 +73,26 @@
                 <TextBox x:Name="namefilter" Height="50" Margin="0 0 0 20" TextChanged="NameFilter">
 
                 </TextBox >
-                <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
-                <StackPanel Orientation="Horizontal">
-                    <TextBox x:Name="countfilter" Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
 
-                    </TextBox >
-                    <ComboBox  Width="30" Height="30">
-
-                    </ComboBox>
-                </StackPanel>
 
                 <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
                 <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="bradncombo_SelectionChanged"  DisplayMemberPath="namebrand" AllowDrop="True" Foreground="White"  FontSize="15" x:Name="bradncombo"  Margin="0 0 0 20">
-                   
+
                 </ComboBox>
 
                 <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
-                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" FontSize="30" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
+                <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
 
                 </ComboBox>
                 <Button Background="Green" BorderBrush="Green" Margin="0,0,0,20" Click="Excel_Click">Экспорт Excel</Button>
                 <Button Background="Blue" BorderBrush="Green" Margin="0,0,0,20"  Click="DelFilters_Click">Убрать фильтры</Button>
                 <Grid Grid.Row="0" VerticalAlignment="Bottom">
 
-                   
+
 
                 </Grid>
 
             </StackPanel>
-
         </Grid>
         <MyControl:NavMenu></MyControl:NavMenu>
 

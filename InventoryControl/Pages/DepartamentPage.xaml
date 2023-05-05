@@ -24,13 +24,13 @@
             <RowDefinition Height="937*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="11*"/>
-            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <control:TitlePage Grid.Row="0" Grid.ColumnSpan="3"></control:TitlePage>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3,0,41,0" Width="881">
-            <ComboBox x:Name="DepCombo" Margin="100 0 100 0"  SelectionChanged="DepCombo_SelectionChanged" DisplayMemberPath="name_departament" FontSize="30px" materialDesign:HintAssist.Hint="Департамент" Height="50" MaxWidth="400" MinWidth="300" HorizontalAlignment="Left"></ComboBox>
-            <Button Content="Добавить технику со склада" Click="AddToDep_Click"  Foreground="Black"  Margin="0 0 20 0" Height="50"  BorderBrush="Blue" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left"  >
+            <ComboBox x:Name="DepCombo"  Style="{StaticResource MaterialDesignOutlinedComboBox}"  SelectionChanged="DepCombo_SelectionChanged" DisplayMemberPath="name_departament" FontSize="15px" materialDesign:HintAssist.Hint="Департамент"   HorizontalAlignment="Left"></ComboBox>
+            <Button Content="Добавить технику со склада" Margin="20,0,0,0" Click="AddToDep_Click"  Foreground="Black"   Height="50"  BorderBrush="Green" BorderThickness="2"  Style="{StaticResource MaterialDesignOutlinedButton}"></Button>
 
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="1">
@@ -64,34 +64,26 @@
             </Grid>
         </ScrollViewer>
 
-        <StackPanel  Grid.Row="1" Margin="10 20" Grid.RowSpan="2">
+        <StackPanel Grid.Column="0"  Grid.Row="2" Margin="10,20,10,20" Grid.RowSpan="2">
             <TextBlock Text="Фильтры:" FontWeight="Bold" FontSize="30" HorizontalAlignment="Center" />
             <TextBlock FontSize="25" Text="Поиск по названию:" FontWeight="SemiBold" />
-            <TextBox Height="50" Margin="0 0 0 20" >
+            <TextBox x:Name="namefilter" Height="50" Margin="0 0 0 20" TextChanged="NameFilter">
 
             </TextBox >
-            <TextBlock FontSize="25" Text="По количеству:" FontWeight="SemiBold" />
-            <StackPanel Orientation="Horizontal">
-                <TextBox Height="50" MaxWidth="300" MinWidth="305" Margin="0 0 0 20">
 
-                </TextBox >
-                <ComboBox Width="30" Height="30">
-
-                </ComboBox>
-            </StackPanel>
 
             <TextBlock FontSize="25" Text="Бренд:" FontWeight="SemiBold" />
-            <ComboBox Height="50"  Margin="0 0 0 20">
+            <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="bradncombo_SelectionChanged"  DisplayMemberPath="namebrand" AllowDrop="True" Foreground="White"  FontSize="15" x:Name="bradncombo"  Margin="0 0 0 20">
 
             </ComboBox>
 
             <TextBlock FontSize="25" Text="Тип техники:" FontWeight="SemiBold" />
-            <ComboBox Height="50"  Margin="0 0 0 20">
+            <ComboBox Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="typeofequip_SelectionChanged" DisplayMemberPath="NameTypeEquip" x:Name="typeofequip" Height="50"  Margin="0 0 0 20">
 
             </ComboBox>
-            <Button Background="Green" Margin="0 0 0 30" BorderBrush="Green" Click="Excel_Click">Экспорт Excel</Button>
-
-            <Grid Height="300">
+            <Button Background="Green" BorderBrush="Green" Margin="0,0,0,20" Click="Excel_Click">Экспорт Excel</Button>
+            <Button Background="Blue" BorderBrush="Green" Margin="0,0,0,20"  Click="DelFilters_Click">Убрать фильтры</Button>
+            <Grid Grid.Row="0" VerticalAlignment="Bottom">
 
 
 

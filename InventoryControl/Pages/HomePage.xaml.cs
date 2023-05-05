@@ -31,7 +31,7 @@ namespace InventoryControl.Pages
     /// <summary>
     /// Логика взаимодействия для HomePage.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class HomePage : System.Windows.Controls.Page
     {
        
 
@@ -77,17 +77,7 @@ namespace InventoryControl.Pages
             Classes.Frame.FrameOBJ.Navigate(new DepartamentPage());
         }
 
-        public HeaderFooter LeftHeader => throw new NotImplementedException();
-
-        public HeaderFooter CenterHeader => throw new NotImplementedException();
-
-        public HeaderFooter RightHeader => throw new NotImplementedException();
-
-        public HeaderFooter LeftFooter => throw new NotImplementedException();
-
-        public HeaderFooter CenterFooter => throw new NotImplementedException();
-
-        public HeaderFooter RightFooter => throw new NotImplementedException();
+       
 
         private void Excel_Click(object sender, RoutedEventArgs e)
         {
@@ -160,7 +150,6 @@ namespace InventoryControl.Pages
             bradncombo.SelectedIndex = -1;
             typeofequip.SelectedIndex = -1;
             namefilter.Text = null;
-            countfilter.Text = null;
             WareHouseEquipDG.ItemsSource = null;
             WareHouseEquipDG.ItemsSource = Service.WarehouseEquipService.GetWareHouseEquipment();
 

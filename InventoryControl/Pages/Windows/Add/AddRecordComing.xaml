@@ -1,0 +1,25 @@
+﻿<Window x:Class="InventoryControl.Pages.Windows.Add.AddRecordComing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryControl.Pages.Windows.Add"
+        mc:Ignorable="d"
+        Title="Добавить новую запись" Height="450" Width="500">
+    <Grid Style="{StaticResource BackgroundGrid}">
+        <Border  Padding="10">
+            <StackPanel>
+                <TextBlock FontSize="20" Text="Выберите обородувание" />
+                <ComboBox x:Name="cmbEquip" DisplayMemberPath="name" Style="{StaticResource MaterialDesignOutlinedComboBox}"></ComboBox>
+                <TextBlock FontSize="20" Text="Прикрепленный сотрудник" />
+                <ComboBox x:Name="cmbEmp" DisplayMemberPath="FioEmp" Style="{StaticResource MaterialDesignOutlinedComboBox}"></ComboBox>
+                <TextBlock  FontSize="20" Text="Число прихода" />
+                <TextBox InputScope="Number" x:Name="txbCountEquip"></TextBox>
+                
+
+            </StackPanel>
+        </Border>
+        <Button Click="Button_Click" VerticalAlignment="Bottom" Margin="10" Content="Добавить" Background="Green"></Button>
+
+    </Grid>
+</Window>

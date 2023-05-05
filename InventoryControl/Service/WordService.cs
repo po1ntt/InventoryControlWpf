@@ -1,4 +1,5 @@
 ﻿using InventoryControl.BdWork;
+using InventoryControl.Pages;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using word = Microsoft.Office.Interop.Word;
 
 namespace InventoryControl.Service
@@ -15,17 +17,27 @@ namespace InventoryControl.Service
         private FileInfo _fileInfo;
         public WordService(string filename)
         {
-            if(File.Exists(filename))
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Выберите темплейт ворда(WordTemplate)";
+            fbd.SelectedPath = System.IO.Directory.GetCurrentDirectory();
+         
+
+            if (fbd.ShowDialog() == DialogResult.OK)
             {
-                _fileInfo = new FileInfo(filename);
+                if (File.Exists(fbd.SelectedPath + "\\TemplateDocladnay.docx"))
+                {
+
+                    _fileInfo = new FileInfo(fbd.SelectedPath  + "\\TemplateDocladnay.docx");
+                }
+                else
+                {
+                    throw new ArgumentException("File not found");
+                }
             }
-            else
-            {
-                throw new ArgumentException("File not found");
-            }
+           
             
         }
-        internal bool Process(Universalniy_Dogovor_peredachi universalniy_Dogovor)
+        internal bool Process(ComingRecords recorsOfСoming)
         {
            word.Application app = null;
 
@@ -37,11 +49,11 @@ namespace InventoryControl.Service
                 app.Documents.Open(file);
                 var items = new Dictionary<string, string>()
                 {
-                    {"[postavshik]", universalniy_Dogovor.Seller.nameSeller},
-                    {"[gruzoPoluchatel]", universalniy_Dogovor.Shipper.NameShipper},
-                    {"[AdressGruzoPoluchatel]", universalniy_Dogovor.Shipper.AdressShipper },
-                    {"[NumberDoc]", universalniy_Dogovor.NumberUniversal },
-                    {"[dataDoc]", universalniy_Dogovor.DateCreated.ToString() }
+                    {"[postavshik]", "DNS"},
+                    {"[gruzoPoluchatel]", recorsOfСoming.Employers.FioEmp},
+                    {"[AdressGruzoPoluchatel]", "Орехово-зуево, ул ленина 44, д. 12, корпус 1" },
+                    {"[NumberDoc]", recorsOfСoming.NumberOfNakladnay },
+                    {"[dataDoc]", recorsOfСoming.DateChanging.ToString() }
 
                 };
                 foreach( var item in items )
@@ -64,27 +76,31 @@ namespace InventoryControl.Service
                 }
                 word.Table table = app.ActiveDocument.Tables[1];
                 int index = 2;
-
-                foreach ( var item in universalniy_Dogovor.ItemsNakladnay)
-                {
-
                     table.Rows.Add(missing);
-                    table.Cell(index, 1).Range.Text = item.id_itemNakladnay.ToString();
-                    table.Cell(index, 2).Range.Text = item.Equipment.name;
-                    table.Cell(index, 3).Range.Text = item.Equipment.id_equip.ToString();
-                    table.Cell(index, 4).Range.Text = item.count.ToString();
-                    table.Cell(index, 5).Range.Text = "5 кг";
-                    table.Cell(index, 6).Range.Text = "3 кг";
+                    table.Cell(index, 1).Range.Text = recorsOfСoming.NumberOfNakladnay.ToString();
+                    table.Cell(index, 2).Range.Text = recorsOfСoming.Equipment.name;
+                    table.Cell(index, 3).Range.Text = recorsOfСoming.Equipment.id_equip.ToString();
+                    table.Cell(index, 4).Range.Text = recorsOfСoming.CountEquip.ToString();
+                    table.Cell(index, 5).Range.Text = recorsOfСoming.Equipment.Brutto.ToString();
+                    table.Cell(index, 6).Range.Text = recorsOfСoming.Equipment.Netto.ToString();
                     table.Cell(index, 7).Range.Text = "Коробка";
-                    table.Cell(index, 8).Range.Text = item.price.ToString();
-                    index++;
+                    table.Cell(index, 8).Range.Text = "45000";
+                System.Windows.Forms.SaveFileDialog saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
 
+                saveFileDialog1.Filter = "Word document|*.doc";
 
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    Object newFileName = saveFileDialog1.FileName;
+                    app.ActiveDocument.SaveAs2(newFileName);
+                    app.ActiveDocument.Close();
+                    return true;
                 }
-                Object newFileName = Path.Combine(_fileInfo.DirectoryName, DateTime.Now.ToString("yyyyMMdd HHmmsss") +  _fileInfo.Name);
-                app.ActiveDocument.SaveAs2(newFileName);
-                app.ActiveDocument.Close();
-                return true;
+
+                 
+               
             }
             
             catch(Exception ex)

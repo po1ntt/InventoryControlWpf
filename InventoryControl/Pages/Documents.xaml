@@ -29,7 +29,6 @@
                                 <DataGridTextColumn Width="1*" Header="Номер" Binding="{Binding NumberUniversal}"></DataGridTextColumn>
                                 <DataGridTextColumn Width="1*"  Header="Дата создания" Binding="{Binding DateCreated,StringFormat=dd.MM.yyy}"></DataGridTextColumn>
                                 <DataGridTextColumn Width="1*"  Header="Кол-во обородования" Binding="{Binding count}"></DataGridTextColumn>
-
                                 <DataGridTemplateColumn >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>

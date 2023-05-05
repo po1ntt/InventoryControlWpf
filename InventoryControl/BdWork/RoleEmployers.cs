@@ -12,20 +12,18 @@ namespace InventoryControl.BdWork
     using System;
     using System.Collections.Generic;
     
-    public partial class Nakladnay
+    public partial class RoleEmployers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Nakladnay()
+        public RoleEmployers()
         {
-            this.ShetFactura = new HashSet<ShetFactura>();
+            this.Employers = new HashSet<Employers>();
         }
     
-        public int id_nakladnay { get; set; }
-        public string NumberNakladnay { get; set; }
-        public Nullable<System.DateTime> DateCreated { get; set; }
-        public Nullable<int> id_itemNaklad { get; set; }
+        public int id_roleEmployers { get; set; }
+        public string NameRoleEmployer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShetFactura> ShetFactura { get; set; }
+        public virtual ICollection<Employers> Employers { get; set; }
     }
 }

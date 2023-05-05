@@ -63,7 +63,7 @@ namespace InventoryControl.Control
         }
         private void Documents_Click(object sender, MouseButtonEventArgs e)
         {
-            Classes.Frame.FrameOBJ.Navigate(new Documents());
+            Classes.Frame.FrameOBJ.Navigate(new RecorsOfСoming());
         }
         private void Orders_Click(object sender, MouseButtonEventArgs e)
         {

@@ -17,23 +17,25 @@ namespace InventoryControl.BdWork
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Equipment()
         {
+            this.ComingRecords = new HashSet<ComingRecords>();
             this.DepartamentEquipment = new HashSet<DepartamentEquipment>();
-            this.ItemsNakladnay = new HashSet<ItemsNakladnay>();
             this.Orders = new HashSet<Orders>();
             this.WarehouseEquipment = new HashSet<WarehouseEquipment>();
         }
     
         public int id_equip { get; set; }
+        public Nullable<int> Netto { get; set; }
         public string name { get; set; }
         public Nullable<int> id_brand { get; set; }
+        public Nullable<int> Brutto { get; set; }
         public Nullable<int> typeofequipment_id { get; set; }
     
         public virtual Brand Brand { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ComingRecords> ComingRecords { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DepartamentEquipment> DepartamentEquipment { get; set; }
         public virtual TypeOfEquipment TypeOfEquipment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ItemsNakladnay> ItemsNakladnay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
