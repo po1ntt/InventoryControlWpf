@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище InventoryСontrolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище InventoryСontrolModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Brand">
           <Key>
             <PropertyRef Name="id_brand" />
@@ -20,8 +20,10 @@
           <Property Name="Equipment_id" Type="int" />
           <Property Name="CountEquip" Type="int" />
           <Property Name="NumberOfNakladnay" Type="nvarchar(max)" />
-          <Property Name="DateChanging" Type="datetime" />
+          <Property Name="DateChanging" Type="nvarchar(max)" />
           <Property Name="Emp_id" Type="int" />
+          <Property Name="Rashod" Type="int" />
+          <Property Name="Ostatok" Type="int" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -330,8 +332,7 @@
             <End Role="WarehouseEquipment" EntitySet="WarehouseEquipment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="InventoryСontrolModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -351,10 +352,12 @@
           <Property Name="Equipment_id" Type="Int32" />
           <Property Name="CountEquip" Type="Int32" />
           <Property Name="NumberOfNakladnay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateChanging" Type="DateTime" Precision="3" />
+          <Property Name="DateChanging" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Emp_id" Type="Int32" />
           <NavigationProperty Name="Employers" Relationship="Self.FK_ComingRecords_Employers" FromRole="ComingRecords" ToRole="Employers" />
           <NavigationProperty Name="Equipment" Relationship="Self.FK_ComingRecords_Equipment" FromRole="ComingRecords" ToRole="Equipment" />
+          <Property Name="Rashod" Type="Int32" />
+          <Property Name="Ostatok" Type="Int32" />
         </EntityType>
         <EntityType Name="Departament">
           <Key>
@@ -621,7 +624,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="InventoryСontrolEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="InventoryСontrolEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Brand" EntityType="Self.Brand" />
           <EntitySet Name="ComingRecords" EntityType="Self.ComingRecords" />
           <EntitySet Name="Departament" EntityType="Self.Departament" />
@@ -687,7 +690,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище InventoryСontrolModelContainer" CdmEntityContainer="InventoryСontrolEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище InventoryСontrolModelContainer" CdmEntityContainer="InventoryСontrolEntities1">
           <EntitySetMapping Name="Brand">
             <EntityTypeMapping TypeName="InventoryСontrolModel.Brand">
               <MappingFragment StoreEntitySet="Brand">
@@ -699,6 +702,8 @@
           <EntitySetMapping Name="ComingRecords">
             <EntityTypeMapping TypeName="InventoryСontrolModel.ComingRecords">
               <MappingFragment StoreEntitySet="ComingRecords">
+                <ScalarProperty Name="Ostatok" ColumnName="Ostatok" />
+                <ScalarProperty Name="Rashod" ColumnName="Rashod" />
                 <ScalarProperty Name="id_comingRecords" ColumnName="id_comingRecords" />
                 <ScalarProperty Name="Equipment_id" ColumnName="Equipment_id" />
                 <ScalarProperty Name="CountEquip" ColumnName="CountEquip" />

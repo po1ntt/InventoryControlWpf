@@ -44,7 +44,7 @@ namespace InventoryControl.Pages
         public ObservableCollection<ComingRecords> recorsOfСomings = new ObservableCollection<ComingRecords>();
         public static Brand brand;
         public static Employers employe;
-        public static DateTime selectedDate;
+        public static string selectedDate;
 
         public static TypeOfEquipment type;
         public static string NName;
@@ -130,13 +130,23 @@ namespace InventoryControl.Pages
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime date = ((System.Windows.Controls.DatePicker)sender).SelectedDate.Value;
-            selectedDate = date;
-            if (date != null)
+            var datapicker = sender as DatePicker;
+            if (string.IsNullOrWhiteSpace(datapicker.Text))
             {
+                selectedDate = "";
                 RecordsComingDG.ItemsSource = null;
                 RecordsComingDG.ItemsSource = Classes.Filters.FilterRecordsComing(brand, employe, type, NName, selectedDate);
             }
+            else
+            {
+                selectedDate = Convert.ToDateTime(datapicker.Text).ToString("d");
+                if (selectedDate != null)
+                {
+                    RecordsComingDG.ItemsSource = null;
+                    RecordsComingDG.ItemsSource = Classes.Filters.FilterRecordsComing(brand, employe, type, NName, selectedDate);
+                }
+            }
+            
         }
 
         private void empCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)

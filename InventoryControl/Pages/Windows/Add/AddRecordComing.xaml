@@ -15,7 +15,8 @@
                 <ComboBox x:Name="cmbEmp" DisplayMemberPath="FioEmp" Style="{StaticResource MaterialDesignOutlinedComboBox}"></ComboBox>
                 <TextBlock  FontSize="20" Text="Число прихода" />
                 <TextBox InputScope="Number" x:Name="txbCountEquip"></TextBox>
-                
+                <TextBlock  FontSize="20" Text="Число расхода" />
+                <TextBox InputScope="Number" x:Name="txbRashod"></TextBox>
 
             </StackPanel>
         </Border>

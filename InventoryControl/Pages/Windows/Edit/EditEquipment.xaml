@@ -15,7 +15,7 @@
         <TextBlock Text="Редактирование техники" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
             <TextBlock x:Name="equipmentedittxb" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
-            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название техники" x:Name="txbNameEquip" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="20px"></TextBox>
+            <TextBox Foreground="White" Grid.Row="1" materialDesign:HintAssist.Hint="Название техники" x:Name="txbNameEquip" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontSize="20px"></TextBox>
             <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Бренд" DisplayMemberPath="namebrand" x:Name="BrandCombo" FontSize="20px"></ComboBox>
             <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Тип техники"  x:Name="TypeCombo" DisplayMemberPath="NameTypeEquip"  FontSize="20px"></ComboBox>
 

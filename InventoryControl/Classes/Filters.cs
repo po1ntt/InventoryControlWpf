@@ -281,7 +281,7 @@ namespace InventoryControl.Classes
             }
             return newcollection;
         }
-        public static ObservableCollection<ComingRecords> FilterRecordsComing(Brand selectedBrand, Employers selectedEmployes, TypeOfEquipment selectedType, string nameFilter, DateTime selectedDate)
+        public static ObservableCollection<ComingRecords> FilterRecordsComing(Brand selectedBrand, Employers selectedEmployes, TypeOfEquipment selectedType, string nameFilter, string selectedDate)
         {
             InventoryСontrolEntities1 context = new InventoryСontrolEntities1();
             List<ComingRecords> list = new List<ComingRecords>();
@@ -344,7 +344,7 @@ namespace InventoryControl.Classes
                     }
                 }
             }
-           /* if (selectedDate != null)
+            if (!string.IsNullOrWhiteSpace(selectedDate))
             {
                 List<ComingRecords> withThatDate = new List<ComingRecords>();
                 withThatDate = context.ComingRecords.Where(p => p.DateChanging != selectedDate).ToList();
@@ -355,7 +355,7 @@ namespace InventoryControl.Classes
                         list.Remove(item);
                     }
                 }
-            }*/
+            }
             foreach (var item in list)
             {
                 newcollection.Add(item);

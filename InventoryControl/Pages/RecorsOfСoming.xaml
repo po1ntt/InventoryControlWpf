@@ -47,6 +47,16 @@
 
 
                         </materialDesign:DataGridTextColumn>
+
+                        <materialDesign:DataGridTextColumn Header="Расход" Width="*" Binding="{Binding Rashod}">
+
+
+                        </materialDesign:DataGridTextColumn>
+
+                        <materialDesign:DataGridTextColumn Header="Остаток" Width="*" Binding="{Binding Ostatok}">
+
+
+                        </materialDesign:DataGridTextColumn>
                         <DataGridTemplateColumn Header="Накладная" Width="*">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -61,7 +71,7 @@
 
 
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Сотрудник" Width="*" Binding="{Binding Employers.FioEmp}">
+                        <DataGridTextColumn Header="Последняя проверка" Width="*" Binding="{Binding Employers.FioEmp}">
 
 
                         </DataGridTextColumn>

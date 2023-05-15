@@ -16,9 +16,9 @@
         <TextBlock Text="Добавление техники" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
             <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
-            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="NameEquip"  FontSize="20px"></TextBox>
+            <TextBox Grid.Row="1" Foreground="White" materialDesign:HintAssist.Hint="Название техники" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="NameEquip"  FontSize="20px"></TextBox>
             <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Бренд" FontSize="20px" x:Name="BrandSelected" DisplayMemberPath="namebrand"></ComboBox>
-            <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Тип техники"   FontSize="20px" x:Name="TypeTech" DisplayMemberPath="name"></ComboBox>
+            <ComboBox Grid.Row="1" materialDesign:HintAssist.Hint="Тип техники"   FontSize="20px" x:Name="TypeTech" DisplayMemberPath="NameTypeEquip"></ComboBox>
 
         </StackPanel>
 

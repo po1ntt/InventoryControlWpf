@@ -16,7 +16,7 @@
         <TextBlock Text="Добавление поставщика" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30px" FontWeight="DemiBold" Grid.Row="0"></TextBlock>
         <StackPanel Grid.Row="1">
             <TextBlock Text="{Binding namebrand}" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" FontSize="20px"></TextBlock>
-            <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Название поставщика" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="namepost" FontSize="20px"></TextBox>
+            <TextBox Grid.Row="1" Foreground="White" materialDesign:HintAssist.Hint="Название поставщика" Style="{StaticResource MaterialDesignFloatingHintTextBox}" x:Name="namepost" FontSize="20px"></TextBox>
         </StackPanel>
 
         <Button Content="Сохранить" Grid.Row="2" Height="70" Click="Button_Click" ></Button>

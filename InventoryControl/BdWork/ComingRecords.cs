@@ -18,8 +18,10 @@ namespace InventoryControl.BdWork
         public Nullable<int> Equipment_id { get; set; }
         public Nullable<int> CountEquip { get; set; }
         public string NumberOfNakladnay { get; set; }
-        public Nullable<System.DateTime> DateChanging { get; set; }
+        public string DateChanging { get; set; }
         public Nullable<int> Emp_id { get; set; }
+        public Nullable<int> Rashod { get; set; }
+        public Nullable<int> Ostatok { get; set; }
     
         public virtual Employers Employers { get; set; }
         public virtual Equipment Equipment { get; set; }
